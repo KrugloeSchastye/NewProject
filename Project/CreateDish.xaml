@@ -1,0 +1,38 @@
+﻿<Window x:Class="Project.CreateDish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        xmlns:core="clr-namespace:Project.Model"
+        mc:Ignorable="d"
+        Title="Добавление блюда" Height="280" Width="500" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <core:Razdel x:Key="razdel"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        <TextBlock Text="Добавление блюда" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  HorizontalAlignment="Center">
+            <StackPanel Margin="10" Width="110">
+                <TextBlock Text="Наименование"/>
+                <TextBox Name="txtbName"></TextBox>
+                <TextBlock Text="Вес"/>
+                <TextBox x:Name="txtbWeight"></TextBox>
+                <TextBlock Text="Состав"/>
+                <TextBox x:Name="txtbCompos"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="10" Width="110">
+                <TextBlock Text="Раздел меню"/>
+                <ComboBox x:Name="cbRazdel" ItemsSource="{Binding Source={StaticResource razdel}}" DisplayMemberPath="NameRazdela" SelectedValuePath="idRazdel"/>
+                <TextBlock Text="Цена"/>
+                <TextBox x:Name="txtbPrice" Height="25"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
+            <Button x:Name="btnCancel" Content="Отмена" Click="btnCancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

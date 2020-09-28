@@ -1,0 +1,57 @@
+﻿<Window x:Class="Project.RegZakWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        xmlns:core="clr-namespace:Project.Model"
+        mc:Ignorable="d"
+        Title="Регистрация заказа" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="CanResize">
+
+    <Window.Resources>
+        <core:Emp x:Key="emp"/>
+        <core:Stol x:Key="stoli"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        <TextBlock Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Добавить блюдо" Name="btnAdd" Click="btnAdd_Click"></Button>
+            <Button Content="Удалить блюдо" Name="btnDel" Click="btnDel_Click"></Button>
+            <Button Content="Купить сертификат" Name="btnBuySert"></Button>
+            <Button Content="Сохранить" Name="btnSave" Click="btnSave_Click"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5">
+                <TextBlock Text="Сотрудник"/>
+                <ComboBox Width="120" Name="cbEmployee" ItemsSource="{Binding Source={StaticResource emp}}" DisplayMemberPath="Surname" SelectedValuePath="idEmployee"></ComboBox>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Стол"/>
+                <TextBox Width="120" Name="txtbStol" IsEnabled="False"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" IsEnabled="False">
+                <CheckBox VerticalAlignment="Center"></CheckBox>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Подарочный сертификат"/>
+                    <ComboBox Width="120" Name="cbSert"></ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" IsEnabled="False">
+                <CheckBox VerticalAlignment="Center"></CheckBox>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Скидочная карта"/>
+                    <ComboBox Width="120" Name="cbSkidCard"></ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Итог: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </StackPanel>
+        <DataGrid x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Блюдо" Width="auto" Binding="{Binding NameBludo, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Количество"  Width="auto" Binding="{Binding Kolvo, UpdateSourceTrigger=PropertyChanged }" />
+                <DataGridTextColumn Header="Цена" Width="467" Binding="{Binding Cena, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>
