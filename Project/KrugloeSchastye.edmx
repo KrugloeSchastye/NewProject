@@ -57,7 +57,7 @@
             <PropertyRef Name="idRestoran" />
           </Key>
           <Property Name="idRestoran" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameRest" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameRest" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Telephone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Leader" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -105,7 +105,7 @@
           </Key>
           <Property Name="idZakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stol" Type="int" Nullable="false" />
-          <Property Name="SummaZakaza" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SummaZakaza" Type="float" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="datetime" />
           <Property Name="DateCloseZakaz" Type="datetime" />
         </EntityType>
@@ -297,7 +297,7 @@
             <PropertyRef Name="idRestoran" />
           </Key>
           <Property Name="idRestoran" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameRest" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NameRest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -351,7 +351,7 @@
           </Key>
           <Property Name="idZakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stol" Type="Int32" Nullable="false" />
-          <Property Name="SummaZakaza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SummaZakaza" Type="Double" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="DateTime" Precision="3" />
           <Property Name="DateCloseZakaz" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Stoli" Relationship="Self.FK_Zakazi_Stoli" FromRole="Zakazi" ToRole="Stoli" />

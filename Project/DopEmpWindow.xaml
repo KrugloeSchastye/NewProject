@@ -1,0 +1,39 @@
+﻿<Window x:Class="Project.DopEmpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="Дополнительная информация о сотруднике" Height="200" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <TextBlock Text="Информация о сотруднике" Style="{StaticResource Header}" Margin="10"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <GroupBox Margin="5" Header="Код">
+                    <TextBlock Name="txtID" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Фамилия">
+                    <TextBlock Name="txtSurname" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Имя">
+                    <TextBlock Name="txtName" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Отчество">
+                    <TextBlock x:Name="txtPatronymic" Text=""></TextBlock>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <GroupBox Margin="5" Header="Телефон">
+                    <TextBlock x:Name="txtTelephone" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Дата рождения">
+                    <TextBlock x:Name="txtBirthDate" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Ресторан">
+                    <TextBlock x:Name="txtRestoran" Text=""></TextBlock>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

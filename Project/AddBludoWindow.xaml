@@ -23,9 +23,9 @@
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Label Content="Количество" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <StackPanel Orientation="Horizontal">
-                        <Button Name="btnPlus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Background="#FF3DEA4D" BorderBrush="{x:Null}" Foreground="Black" RenderTransformOrigin="0.117,0.621" Click="btnPlus_Click"/>
+                        <Button Name="btnPlus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Background="#FF3DEA4D" BorderBrush="{x:Null}" Foreground="Black" RenderTransformOrigin="0.117,0.621" Click="btnPlus_Click"/>
                         <TextBlock Name="lblCount" TextAlignment="Center" TextWrapping="Wrap" Text="1" VerticalAlignment="Center" Width="60"/>
-                        <Button Name="btnMinus" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Background="#FFEA553D" BorderBrush="{x:Null}" Foreground="Black" RenderTransformOrigin="-4.7,0.167" Click="btnMinus_Click"/>
+                        <Button Name="btnMinus" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Background="#FFEA553D" BorderBrush="{x:Null}" Foreground="Black" RenderTransformOrigin="-4.7,0.167" Click="btnMinus_Click"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

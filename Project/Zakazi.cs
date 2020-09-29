@@ -22,7 +22,7 @@ namespace Project
     
         public int idZakaza { get; set; }
         public int Stol { get; set; }
-        public string SummaZakaza { get; set; }
+        public double SummaZakaza { get; set; }
         public Nullable<System.DateTime> DateOpenZakaz { get; set; }
         public Nullable<System.DateTime> DateCloseZakaz { get; set; }
     

@@ -98,5 +98,18 @@ namespace Project
         {
             dgEmployee.ItemsSource = db.Employee.Where(t => t.Surname == txtbSearch.Text).ToArray().ToList();
         }
+
+        private void dgEmployee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Employee emp = dgEmployee.SelectedItem as Employee;
+            string id = Convert.ToString(emp.idEmployee);
+            string surn = Convert.ToString(emp.Surname);
+            string name = Convert.ToString(emp.Name);
+            string patr = Convert.ToString(emp.Patronymic);
+            string telep = Convert.ToString(emp.Telephone);
+            string bdate = Convert.ToString(emp.BirthDate);
+            string rest = Convert.ToString(emp.Restaurants.NameRest);
+            new DopEmpWindow(id, surn, name,patr,telep,bdate,rest).ShowDialog();
+        }
     }
 }

@@ -52,7 +52,9 @@
                         <ComboBox Width="120" x:Name="cbSkidCard"/>
                     </StackPanel>
                 </StackPanel>
-                <TextBlock Text="Итог: " Name="txtItog" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <GroupBox Header="Итог">
+                    <TextBlock Text="" Name="txtItog" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </GroupBox>
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
@@ -60,6 +62,7 @@
                 <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource bluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda" />
                 <DataGridTextColumn Header="Количество"  Width="auto" Binding="{Binding Kolvo, UpdateSourceTrigger=PropertyChanged }" />
                 <DataGridTextColumn Header="Цена" Width="467" Binding="{Binding Cena, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Сумма" Width="467" Binding="{Binding Summa, UpdateSourceTrigger=PropertyChanged}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -36,16 +36,32 @@ namespace Project
                 ZakazBluda delBludo = (ZakazBluda)dgZakBludo.SelectedItem;
                 if (MessageBox.Show("Вы точно хотите удалить блюдо из заказа?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
+                    db.ZakazBluda.Remove(delBludo);
+                    db.SaveChanges();
+
+                    Summa = 0;
+
                     foreach (var item in db.ZakazBluda)
                     {
                         if (item.idZakaza == idZak)
                         {
-                            Summa -= item.Summa;
+                            Summa += item.Summa;
+                            txtItog.Text = $"Итог: {Summa}";
                         }
                     }
-                    txtItog.Text = $"Итог: {Summa}";
-                    db.ZakazBluda.Remove(delBludo);
+
+                    foreach (var item in db.Zakazi)
+                    {
+                        if (item.idZakaza == idZak)
+                        {
+                            item.SummaZakaza = Summa;
+                            txtItog.Text = $"Итог: {Summa}";
+                        }
+                    }
+
+
                     db.SaveChanges();
+                    txtItog.Text = $"Итог: {Summa}";
                     dgZakBludo.ItemsSource = db.ZakazBluda.Where(i => i.idZakaza == idZak).ToList();
                 }
             }
@@ -56,7 +72,7 @@ namespace Project
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             new AddBludoWindow(idZak).ShowDialog();
-            
+            Summa = 0;
             
             dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
             foreach (var item in db.ZakazBluda)
@@ -71,7 +87,7 @@ namespace Project
             {
                 if (item.idZakaza == idZak)
                 {
-                    item.SummaZakaza = Summa.ToString();
+                    item.SummaZakaza = Summa;
                 }
             }
         }
@@ -81,7 +97,7 @@ namespace Project
             Zakazi zak = new Zakazi();
             zak.Stol = Stol;
             zak.DateOpenZakaz = DateTime.Now;
-            zak.SummaZakaza = 0.ToString();
+            zak.SummaZakaza = 0;
             db.Zakazi.Add(zak);
             db.SaveChanges(); 
             idZak = zak.idZakaza;

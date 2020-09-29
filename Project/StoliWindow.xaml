@@ -20,7 +20,7 @@
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button Name="btnOkay" Content="ОК" Width="75" Click="btnOkay_Click"/>
-                <Button Name="btnCancel" Content="Отмена" Width="75"/>
+                <Button Name="btnCancel" Content="Отмена" Width="75" Click="btnCancel_Click"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

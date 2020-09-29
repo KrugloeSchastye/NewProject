@@ -48,8 +48,12 @@ namespace Project
                         }
                     }
                 }
-
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
