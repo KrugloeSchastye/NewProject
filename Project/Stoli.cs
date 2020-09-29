@@ -22,7 +22,9 @@ namespace Project
     
         public int idStola { get; set; }
         public string NameStola { get; set; }
+        public bool IsBusy { get; set; }
     
+        public virtual IsBusy IsBusy1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zakazi> Zakazi { get; set; }
     }

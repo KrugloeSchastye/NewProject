@@ -39,5 +39,10 @@ namespace Project
         {
             Manager.MainFrame.Navigate(new RegZakPage());
         }
+
+        private void btnTable_Click(object sender, RoutedEventArgs e)
+        {
+            new TableWindow().ShowDialog();
+        }
     }
 }

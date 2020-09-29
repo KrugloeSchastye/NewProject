@@ -13,23 +13,29 @@
         <core:Restorans x:Key="restorans"/>
     </Page.Resources>
 
-    <StackPanel>
-        <TextBlock Text="Сотрудники" Style="{StaticResource Header}" Margin="10"/>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Button Content="Добавить" Name="btnAdd" Width="100" Click="btnAdd_Click"/>
-            <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
-            <Button Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
-            <Button Content="Сохранить" Name="btnSave" Width="100" Click="btnSave_Click"/>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Name="cbxVSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Checked="cbxVSearch_Checked" Unchecked="cbxVSearch_Unchecked"></CheckBox>
-               <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Введите фамилию для поиска"></TextBlock>
-                    <TextBox x:Name="txtbSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Width="180" IsEnabled="False" TextChanged="txtbSearch_TextChanged"></TextBox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Сотрудники" Style="{StaticResource Header}" Margin="10"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button Content="Добавить" Name="btnAdd" Width="100" Click="btnAdd_Click"/>
+                <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
+                <Button Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
+                <Button Content="Сохранить" Name="btnSave" Width="100" Click="btnSave_Click"/>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="cbxVSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Checked="cbxVSearch_Checked" Unchecked="cbxVSearch_Unchecked"></CheckBox>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Введите фамилию для поиска"></TextBlock>
+                        <TextBox x:Name="txtbSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Width="180" IsEnabled="False" TextChanged="txtbSearch_TextChanged"></TextBox>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
 
-        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Name="dgEmployee">
+        <DataGrid Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" Name="dgEmployee">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Код" Binding="{Binding idEmployee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -41,5 +47,5 @@
             </DataGrid.Columns>
         </DataGrid>
 
-    </StackPanel>
+    </Grid>
 </Page>

@@ -17,6 +17,13 @@
           <Property Name="BirthDate" Type="smalldatetime" Nullable="false" />
           <Property Name="Restoran" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="IsBusy">
+          <Key>
+            <PropertyRef Name="idBusy" />
+          </Key>
+          <Property Name="idBusy" Type="bit" Nullable="false" />
+          <Property Name="textBusy" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="Login">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,6 +76,7 @@
           </Key>
           <Property Name="idStola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameStola" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsBusy" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -97,7 +105,7 @@
           </Key>
           <Property Name="idZakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stol" Type="int" Nullable="false" />
-          <Property Name="SummaZakaza" Type="int" Nullable="false" />
+          <Property Name="SummaZakaza" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="datetime" />
           <Property Name="DateCloseZakaz" Type="datetime" />
         </EntityType>
@@ -134,6 +142,18 @@
             </Principal>
             <Dependent Role="Menu">
               <PropertyRef Name="RazdelMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stoli_IsBusy">
+          <End Role="IsBusy" Type="Self.IsBusy" Multiplicity="1" />
+          <End Role="Stoli" Type="Self.Stoli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IsBusy">
+              <PropertyRef Name="idBusy" />
+            </Principal>
+            <Dependent Role="Stoli">
+              <PropertyRef Name="IsBusy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,6 +195,7 @@
         </Association>
         <EntityContainer Name="Хранилище KrugloeSchastyeModelContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IsBusy" EntityType="Self.IsBusy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Razdeli" EntityType="Self.Razdeli" Schema="dbo" store:Type="Tables" />
@@ -195,6 +216,10 @@
           <AssociationSet Name="FK_Menu_Razdeli" Association="Self.FK_Menu_Razdeli">
             <End Role="Razdeli" EntitySet="Razdeli" />
             <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stoli_IsBusy" Association="Self.FK_Stoli_IsBusy">
+            <End Role="IsBusy" EntitySet="IsBusy" />
+            <End Role="Stoli" EntitySet="Stoli" />
           </AssociationSet>
           <AssociationSet Name="FK_ZakazBluda_Menu" Association="Self.FK_ZakazBluda_Menu">
             <End Role="Menu" EntitySet="Menu" />
@@ -226,6 +251,14 @@
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Restoran" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Restaurants" Relationship="Self.FK_Employee_Restaurants" FromRole="Employee" ToRole="Restaurants" />
+        </EntityType>
+        <EntityType Name="IsBusy">
+          <Key>
+            <PropertyRef Name="idBusy" />
+          </Key>
+          <Property Name="idBusy" Type="Boolean" Nullable="false" />
+          <Property Name="textBusy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Stoli" Relationship="Self.FK_Stoli_IsBusy" FromRole="IsBusy" ToRole="Stoli" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -285,6 +318,8 @@
           </Key>
           <Property Name="idStola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameStola" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsBusy" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IsBusy1" Relationship="Self.FK_Stoli_IsBusy" FromRole="Stoli" ToRole="IsBusy" />
           <NavigationProperty Name="Zakazi" Relationship="Self.FK_Zakazi_Stoli" FromRole="Stoli" ToRole="Zakazi" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -316,7 +351,7 @@
           </Key>
           <Property Name="idZakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stol" Type="Int32" Nullable="false" />
-          <Property Name="SummaZakaza" Type="Int32" Nullable="false" />
+          <Property Name="SummaZakaza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="DateTime" Precision="3" />
           <Property Name="DateCloseZakaz" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Stoli" Relationship="Self.FK_Zakazi_Stoli" FromRole="Zakazi" ToRole="Stoli" />
@@ -331,6 +366,18 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="Restoran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stoli_IsBusy">
+          <End Role="IsBusy" Type="Self.IsBusy" Multiplicity="1" />
+          <End Role="Stoli" Type="Self.Stoli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IsBusy">
+              <PropertyRef Name="idBusy" />
+            </Principal>
+            <Dependent Role="Stoli">
+              <PropertyRef Name="IsBusy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,6 +443,7 @@
         </Association>
         <EntityContainer Name="KrugloeSchastyeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="IsBusy" EntityType="Self.IsBusy" />
           <EntitySet Name="Login" EntityType="Self.Login" />
           <EntitySet Name="Menu" EntityType="Self.Menu" />
           <EntitySet Name="Razdeli" EntityType="Self.Razdeli" />
@@ -408,6 +456,10 @@
           <AssociationSet Name="FK_Employee_Restaurants" Association="Self.FK_Employee_Restaurants">
             <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stoli_IsBusy" Association="Self.FK_Stoli_IsBusy">
+            <End Role="IsBusy" EntitySet="IsBusy" />
+            <End Role="Stoli" EntitySet="Stoli" />
           </AssociationSet>
           <AssociationSet Name="FK_Login_Roles" Association="Self.FK_Login_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -446,6 +498,14 @@
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Restoran" ColumnName="Restoran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IsBusy">
+            <EntityTypeMapping TypeName="KrugloeSchastyeModel.IsBusy">
+              <MappingFragment StoreEntitySet="IsBusy">
+                <ScalarProperty Name="idBusy" ColumnName="idBusy" />
+                <ScalarProperty Name="textBusy" ColumnName="textBusy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -505,6 +565,7 @@
               <MappingFragment StoreEntitySet="Stoli">
                 <ScalarProperty Name="idStola" ColumnName="idStola" />
                 <ScalarProperty Name="NameStola" ColumnName="NameStola" />
+                <ScalarProperty Name="IsBusy" ColumnName="IsBusy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

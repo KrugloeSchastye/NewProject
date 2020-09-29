@@ -26,6 +26,7 @@ namespace Project
         }
     
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<IsBusy> IsBusy { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<Razdeli> Razdeli { get; set; }

@@ -12,22 +12,18 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Zakazi
+    public partial class IsBusy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Zakazi()
+        public IsBusy()
         {
-            this.ZakazBluda = new HashSet<ZakazBluda>();
+            this.Stoli = new HashSet<Stoli>();
         }
     
-        public int idZakaza { get; set; }
-        public int Stol { get; set; }
-        public string SummaZakaza { get; set; }
-        public Nullable<System.DateTime> DateOpenZakaz { get; set; }
-        public Nullable<System.DateTime> DateCloseZakaz { get; set; }
+        public bool idBusy { get; set; }
+        public string textBusy { get; set; }
     
-        public virtual Stoli Stoli { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZakazBluda> ZakazBluda { get; set; }
+        public virtual ICollection<Stoli> Stoli { get; set; }
     }
 }

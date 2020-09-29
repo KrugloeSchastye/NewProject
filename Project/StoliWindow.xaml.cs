@@ -19,6 +19,7 @@ namespace Project
     /// </summary>
     public partial class StoliWindow : Window
     {
+        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
         public StoliWindow()
         {
             InitializeComponent();
@@ -30,9 +31,24 @@ namespace Project
                 MessageBox.Show("Вы не выбрали стол!");
             else
             {
-                int Stol = cbStoli.SelectedIndex + 1;
-                new RegZakWindow(Stol).ShowDialog();
-                this.Close();
+                Stoli s = cbStoli.SelectedItem as Stoli;
+                int Stol = s.idStola;
+                foreach (var item in db.Stoli)
+                {
+                    if (Stol == item.idStola)
+                    {
+                        if (item.IsBusy == false)
+                        {
+                            MessageBox.Show("Стол занят!");
+                        }
+                        else
+                        {
+                            new RegZakWindow(Stol).ShowDialog();
+                            this.Close();
+                        }
+                    }
+                }
+
             }
         }
     }

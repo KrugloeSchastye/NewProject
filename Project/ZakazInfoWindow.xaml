@@ -1,0 +1,42 @@
+﻿<Window x:Class="Project.ZakazInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        xmlns:core="clr-namespace:Project.Model"
+        mc:Ignorable="d"
+        Title="Информация о заказе" Height="450" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <core:Bluda x:Key="bluda"/>
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock Text="Информация о заказе" Style="{StaticResource Header}" Margin="10"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <GroupBox Margin="5" Header="Стол">
+                    <TextBlock Name="txtStol" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Cумма заказа">
+                    <TextBlock Name="txtSumma" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Время открытия заказа">
+                    <TextBlock Name="txtDateOpen" Text=""></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="5" Header="Время закрытия заказа">
+                    <TextBlock x:Name="txtDateClose" Text=""></TextBlock>
+                </GroupBox>
+            </StackPanel>
+            <GroupBox Header="Блюда">
+                <DataGrid x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource bluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda" />
+                        <DataGridTextColumn Header="Количество" Binding="{Binding Kolvo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Cena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="Сумма" Binding="{Binding Summa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </StackPanel>
+    </StackPanel>
+</Window>

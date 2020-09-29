@@ -15,7 +15,7 @@
         <Grid Grid.Row="2" Background="#445c93"/>
         <Grid Grid.Row="0" Background="#445c93"/>
         <Button Name="btnBack" Content="Назад" HorizontalAlignment="Right" VerticalAlignment="Center" Click="btnBack_Click"></Button>
-        <Frame ContentRendered="MainFrame_ContentRendered" Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+        <Frame ContentRendered="MainFrame_ContentRendered" Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
         <TextBlock Grid.Row="0" FontSize="28" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" Name="txtHeader" Margin="5" Foreground="White"/>
         <TextBlock Grid.Row="2" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" Name="txtTitle" Margin="5" Foreground="White"></TextBlock>
     </Grid>

@@ -30,16 +30,84 @@ namespace Project
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             new StoliWindow().ShowDialog();
-            //new RegZakWindow().ShowDialog();
+            dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
         }
 
         private void dgZak_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            dgZakBludo.Visibility = Visibility.Visible;
             Zakazi zakazi = dgZak.SelectedItem as Zakazi;
             int idZak = Convert.ToInt32(zakazi.idZakaza);
 
-            dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
+            //dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
+            int stol = Convert.ToInt32(zakazi.Stol);
+            int summ = Convert.ToInt32(zakazi.SummaZakaza);
+            string open = Convert.ToString(zakazi.DateOpenZakaz);
+            string close = Convert.ToString(zakazi.DateCloseZakaz);
+            new ZakazInfoWindow(idZak, stol, summ, open, close).ShowDialog();
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+        }
+
+        private void btnCloseZak_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgZak.SelectedItem != null)
+            {
+                Zakazi zak = dgZak.SelectedItem as Zakazi;
+                int idZak = Convert.ToInt32(zak.idZakaza);
+                int Stol = Convert.ToInt32(zak.Stol);
+                if (MessageBox.Show("Вы уверены что хотите закрыть заказ?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    foreach (var item in db.Zakazi)
+                    {
+                        if (idZak == item.idZakaza)
+                        {
+                            item.DateCloseZakaz = DateTime.Now;
+                        }
+                    }
+                }
+                foreach (var i in db.Stoli)
+                {
+                    if (Stol == i.idStola)
+                    {
+                        i.IsBusy = true;
+                    }
+                }
+                db.SaveChanges();
+                dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+            }
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgZak.SelectedItem != null)
+            {
+                Zakazi zak = dgZak.SelectedItem as Zakazi;
+                int idZak = Convert.ToInt32(zak.idZakaza);
+                int Stol = Convert.ToInt32(zak.Stol);
+                if (MessageBox.Show("Вы точно хотите удалить этот заказ?", "Внимание", MessageBoxButton.YesNoCancel) == MessageBoxResult.Yes)
+                {
+                    foreach (var item in db.ZakazBluda)
+                    {
+                        if (item.idZakaza == idZak)
+                        {
+                            db.ZakazBluda.Remove(item);
+                        }
+                    }
+                    db.Zakazi.Remove(zak);
+                    foreach (var item in db.Stoli)
+                    {
+                        if (Stol == item.idStola)
+                        {
+                            item.IsBusy = true;
+                        }
+                    }
+                    db.SaveChanges();
+                    dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+                }
+            }
         }
     }
 }

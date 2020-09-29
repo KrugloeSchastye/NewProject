@@ -42,13 +42,14 @@ namespace Project
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ZakazBluda zb = new ZakazBluda();
-            zb.Kolvo = int.Parse(lblCount.Text);
-            zb.NameBludo = ((Menu)cbBluda.SelectedItem).idBluda;
-            zb.Cena = ((Menu)cbBluda.SelectedItem).Price;
-            zb.Summa = ((Menu)cbBluda.SelectedItem).Price * zb.Kolvo;
-            zb.idZakaza = idZak;
-            db.ZakazBluda.Add(zb);
+
+                        ZakazBluda zb = new ZakazBluda();
+                        zb.Kolvo = int.Parse(lblCount.Text);
+                        zb.NameBludo = ((Menu)cbBluda.SelectedItem).idBluda;
+                        zb.Cena = ((Menu)cbBluda.SelectedItem).Price;
+                        zb.Summa = ((Menu)cbBluda.SelectedItem).Price * zb.Kolvo;
+                        zb.idZakaza = idZak;
+                        db.ZakazBluda.Add(zb);
             db.SaveChanges();
             Close();
         }

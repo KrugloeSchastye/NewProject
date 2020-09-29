@@ -22,6 +22,7 @@ namespace Project
         KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
         int Stol;
         int idZak;
+        double Summa;
         public RegZakWindow(int Stol)
         {
             InitializeComponent();
@@ -30,13 +31,49 @@ namespace Project
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dgZakBludo.SelectedItem != null)
+            {
+                ZakazBluda delBludo = (ZakazBluda)dgZakBludo.SelectedItem;
+                if (MessageBox.Show("Вы точно хотите удалить блюдо из заказа?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    foreach (var item in db.ZakazBluda)
+                    {
+                        if (item.idZakaza == idZak)
+                        {
+                            Summa -= item.Summa;
+                        }
+                    }
+                    txtItog.Text = $"Итог: {Summa}";
+                    db.ZakazBluda.Remove(delBludo);
+                    db.SaveChanges();
+                    dgZakBludo.ItemsSource = db.ZakazBluda.Where(i => i.idZakaza == idZak).ToList();
+                }
+            }
+            else
+                MessageBox.Show("Выберите какое именно блюдо хотите удалить!");
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             new AddBludoWindow(idZak).ShowDialog();
+            
+            
             dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
+            foreach (var item in db.ZakazBluda)
+            {
+                if (item.idZakaza == idZak)
+                {
+                    Summa += item.Summa;
+                }
+            }
+            txtItog.Text = $"Итог: {Summa}";
+            foreach (var item in db.Zakazi)
+            {
+                if (item.idZakaza == idZak)
+                {
+                    item.SummaZakaza = Summa.ToString();
+                }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,7 +81,7 @@ namespace Project
             Zakazi zak = new Zakazi();
             zak.Stol = Stol;
             zak.DateOpenZakaz = DateTime.Now;
-            zak.SummaZakaza = 0;
+            zak.SummaZakaza = 0.ToString();
             db.Zakazi.Add(zak);
             db.SaveChanges(); 
             idZak = zak.idZakaza;
@@ -53,8 +90,41 @@ namespace Project
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            db.SaveChanges();
-            Close();
+            if (Summa <= 0)
+            {
+                MessageBox.Show("Вы ничего не выбрали!");
+            }
+            else
+            {
+                foreach (var i in db.Stoli)
+                {
+                    if (Stol == i.idStola)
+                    {
+                        i.IsBusy = false;
+                    }
+                }
+                db.SaveChanges();
+                Close();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Summa <= 0)
+            {
+                MessageBox.Show("Вы ничего не выбрали!");
+            }
+            else
+            {
+                foreach (var i in db.Stoli)
+                {
+                    if (Stol == i.idStola)
+                    {
+                        i.IsBusy = false;
+                    }
+                }
+                db.SaveChanges();
+            }
         }
     }
 }

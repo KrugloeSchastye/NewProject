@@ -13,23 +13,30 @@
         <core:Razdel x:Key="listRazdel"/>
     </Page.Resources>
 
-    <StackPanel>
-        <TextBlock Text="Блюда" Style="{StaticResource Header}" Margin="10"/>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Button Content="Добавить" Name="btnAdd" Width="100" Click="btnAdd_Click"/>
-            <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
-            <Button Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
-            <Button Content="Сохранить" Name="btnSave" Width="100" Click="btnSave_Click"/>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Name="cbxVSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Unchecked="cbxVSearch_Unchecked" Checked="cbxVSearch_Checked"></CheckBox>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Выберите раздел для поиска"></TextBlock>
-                    <ComboBox x:Name="cbSearch" HorizontalAlignment="Center" ItemsSource="{Binding Source={StaticResource listRazdel}}" DisplayMemberPath="NameRazdela" SelectedValuePath="idRazdel" VerticalAlignment="Center" Margin="5" Width="180" IsEnabled="False" SelectionChanged="cbSearch_SelectionChanged" ></ComboBox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Блюда" Style="{StaticResource Header}" Margin="10"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button Content="Добавить" Name="btnAdd" Width="100" Click="btnAdd_Click"/>
+                <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
+                <Button Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
+                <Button Content="Сохранить" Name="btnSave" Width="100" Click="btnSave_Click"/>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="cbxVSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Unchecked="cbxVSearch_Unchecked" Checked="cbxVSearch_Checked"></CheckBox>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Выберите раздел для поиска"></TextBlock>
+                        <ComboBox x:Name="cbSearch" HorizontalAlignment="Center" ItemsSource="{Binding Source={StaticResource listRazdel}}" DisplayMemberPath="NameRazdela" SelectedValuePath="idRazdel" VerticalAlignment="Center" Margin="5" Width="180" IsEnabled="False" SelectionChanged="cbSearch_SelectionChanged" ></ComboBox>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
+
         </StackPanel>
         
-        <DataGrid Name="dgDish" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Grid.Row="1" Name="dgDish" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Код" Binding="{Binding idBluda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -40,5 +47,5 @@
             </DataGrid.Columns>
         </DataGrid>
         
-    </StackPanel>
+    </Grid>
 </Page>
