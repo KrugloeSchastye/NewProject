@@ -40,10 +40,11 @@ namespace Project
 
             //dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
             int stol = Convert.ToInt32(zakazi.Stol);
-            int summ = Convert.ToInt32(zakazi.SummaZakaza);
+            double summ = Convert.ToInt32(zakazi.SummaZakaza);
+            double summS = Convert.ToDouble(zakazi.SummaZakazaS);
             string open = Convert.ToString(zakazi.DateOpenZakaz);
             string close = Convert.ToString(zakazi.DateCloseZakaz);
-            new ZakazInfoWindow(idZak, stol, summ, open, close).ShowDialog();
+            new ZakazInfoWindow(idZak, stol, summ, summS, open, close).ShowDialog();
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -58,25 +59,48 @@ namespace Project
                 Zakazi zak = dgZak.SelectedItem as Zakazi;
                 int idZak = Convert.ToInt32(zak.idZakaza);
                 int Stol = Convert.ToInt32(zak.Stol);
-                if (MessageBox.Show("Вы уверены что хотите закрыть заказ?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (zak.Closed == false)
                 {
-                    foreach (var item in db.Zakazi)
+                    if (MessageBox.Show("Вы уверены что хотите закрыть заказ?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        if (idZak == item.idZakaza)
+                        foreach (var item in db.Zakazi)
                         {
-                            item.DateCloseZakaz = DateTime.Now;
+                            if (idZak == item.idZakaza)
+                            {
+                                item.DateCloseZakaz = DateTime.Now;
+                                item.Closed = true;
+                            }
                         }
                     }
-                }
-                foreach (var i in db.Stoli)
-                {
-                    if (Stol == i.idStola)
+
+                    foreach (var i in db.Stoli)
                     {
-                        i.IsBusy = true;
+                        if (Stol == i.idStola)
+                        {
+                            i.IsBusy = true;
+                        }
                     }
+                    db.SaveChanges();
+                    dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+
+                    foreach (var item in db.Employee)
+                    {
+                        if (item.idEmployee == zak.Employee)
+                        {
+                            item.NumberOfSales = 0;
+                            item.NumberOfSales++;
+                        }
+                    }
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
-                dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+                else
+                {
+                    MessageBox.Show("Заказ уже закрыт!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ!");
             }
         }
 

@@ -22,15 +22,17 @@ namespace Project
         KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
         int idZak;
         int stol;
-        int summ;
+        double summ;
+        double summS;
         string open;
         string close;
-        public ZakazInfoWindow(int idZak, int stol, int summ, string open, string close)
+        public ZakazInfoWindow(int idZak, int stol, double summ, double summS, string open, string close)
         {
             InitializeComponent();
             this.idZak = idZak;
             this.stol = stol;
             this.summ = summ;
+            this.summS = summS;
             this.open = open;
             this.close = close;
         }
@@ -41,6 +43,7 @@ namespace Project
 
             txtStol.Text = stol.ToString(); 
             txtSumma.Text = summ.ToString();
+            txtSummaS.Text = summS.ToString();
             txtDateOpen.Text = open.ToString();
             txtDateClose.Text = close.ToString();
             dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();

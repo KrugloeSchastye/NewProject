@@ -13,21 +13,31 @@
     <StackPanel>
         <TextBlock Text="Информация о заказе" Style="{StaticResource Header}" Margin="10"/>
         <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <GroupBox Margin="5" Header="Стол">
-                    <TextBlock Name="txtStol" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Cумма заказа">
-                    <TextBlock Name="txtSumma" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Время открытия заказа">
-                    <TextBlock Name="txtDateOpen" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Время закрытия заказа">
-                    <TextBlock x:Name="txtDateClose" Text=""></TextBlock>
-                </GroupBox>
-            </StackPanel>
-            <GroupBox Header="Блюда">
+            <GroupBox Header="Заказ">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Стол"></TextBlock>
+                        <TextBlock Name="txtStol" Text=""></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Сумма заказа"></TextBlock>
+                        <TextBlock Name="txtSumma" Text=""></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Сумма заказа со скидкой"></TextBlock>
+                        <TextBlock Name="txtSummaS" Text=""></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Время открытия заказа"></TextBlock>
+                        <TextBlock Name="txtDateOpen" Text=""></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Время закрытия заказа"></TextBlock>
+                        <TextBlock x:Name="txtDateClose" Text=""></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Блюда заказа">
                 <DataGrid x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource bluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda" />

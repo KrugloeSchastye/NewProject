@@ -15,8 +15,8 @@
             <Button Content="Блюда" Name="btnBludo" Click="btnBludo_Click"></Button>
             <Button Content="Заказы" Name="btnZak" Click="btnZak_Click"></Button>
             <Button Content="Столы" Name="btnTable" Click="btnTable_Click"></Button>
-            <Button Content="Сертификаты" Name="btnSert"></Button>
-            <Button Content="Скидочные карты" Name="btnCard"></Button>
+            <Button Content="Скидочные карты" Name="btnCard" Click="btnCard_Click"></Button>
+            <Button Content="Отчеты" x:Name="btnReps" Click="btnReps_Click"/>
         </StackPanel>
     </Grid>
 </Page>

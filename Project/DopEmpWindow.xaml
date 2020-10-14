@@ -8,31 +8,40 @@
         Title="Дополнительная информация о сотруднике" Height="200" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TextBlock Text="Информация о сотруднике" Style="{StaticResource Header}" Margin="10"/>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <GroupBox Margin="5" Header="Код">
-                    <TextBlock Name="txtID" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Фамилия">
-                    <TextBlock Name="txtSurname" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Имя">
-                    <TextBlock Name="txtName" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Отчество">
-                    <TextBlock x:Name="txtPatronymic" Text=""></TextBlock>
-                </GroupBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <GroupBox Margin="5" Header="Телефон">
-                    <TextBlock x:Name="txtTelephone" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Дата рождения">
-                    <TextBlock x:Name="txtBirthDate" Text=""></TextBlock>
-                </GroupBox>
-                <GroupBox Margin="5" Header="Ресторан">
-                    <TextBlock x:Name="txtRestoran" Text=""></TextBlock>
-                </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image Height="70" Width="70" Margin="5" Source="Resources/аватарка.png" VerticalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="2" Orientation="Horizontal">
+                        <TextBlock Text="Код: "/>
+                        <TextBlock x:Name="txtID" Text=""/>
+                        <TextBlock Text=";"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="2" Orientation="Horizontal">
+                        <TextBlock Text="Фамилия: "/>
+                        <TextBlock x:Name="txtSurname" Text=""/>
+                        <TextBlock Text=";"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="2" Orientation="Horizontal">
+                        <TextBlock Text="Телефон: "/>
+                        <TextBlock x:Name="txtTelephone" Text=""/>
+                        <TextBlock Text=";"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="2" Orientation="Horizontal">
+                        <TextBlock Text="Ресторан: "/>
+                        <TextBlock x:Name="txtRestoran" Text=""/>
+                        <TextBlock Text=";"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="2" Orientation="Horizontal">
+                        <TextBlock Text="Роль: "/>
+                        <TextBlock x:Name="txtRole" Text=""/>
+                        <TextBlock Text="."></TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </StackPanel>

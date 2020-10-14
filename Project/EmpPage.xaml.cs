@@ -109,7 +109,8 @@ namespace Project
             string telep = Convert.ToString(emp.Telephone);
             string bdate = Convert.ToString(emp.BirthDate);
             string rest = Convert.ToString(emp.Restaurants.NameRest);
-            new DopEmpWindow(id, surn, name,patr,telep,bdate,rest).ShowDialog();
+            string role = Convert.ToString(emp.Roles.Name);
+            new DopEmpWindow(id, surn,telep,bdate,rest,role).ShowDialog();
         }
     }
 }

@@ -12,21 +12,16 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Roles
+    public partial class SkidCards
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Roles()
-        {
-            this.Employee = new HashSet<Employee>();
-            this.Login = new HashSet<Login>();
-        }
-    
-        public int idRole { get; set; }
+        public int idCard { get; set; }
+        public string Surname { get; set; }
         public string Name { get; set; }
+        public string Patronymic { get; set; }
+        public int idEmployee { get; set; }
+        public string NumberCard { get; set; }
+        public string Nominal { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Login> Login { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

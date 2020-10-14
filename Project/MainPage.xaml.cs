@@ -44,5 +44,15 @@ namespace Project
         {
             new TableWindow().ShowDialog();
         }
+
+        private void btnCard_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new SkidCardPage());
+        }
+
+        private void btnReps_Click(object sender, RoutedEventArgs e)
+        {
+            new ReportsWindow().ShowDialog();
+        }
     }
 }

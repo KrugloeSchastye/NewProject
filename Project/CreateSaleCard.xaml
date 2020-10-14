@@ -1,0 +1,55 @@
+﻿<Window x:Class="Project.CreateSaleCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        xmlns:core="clr-namespace:Project.Model"
+        mc:Ignorable="d"
+        Title="CreateSaleCard" Height="300" Width="575" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <core:Emp x:Key="emp"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        <TextBlock Text="Создание скидочной карты" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Margin="5">
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Фамилия"/>
+                    <TextBox x:Name="txtbSurname" Width="150"/>
+                </StackPanel>
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Имя"/>
+                    <TextBox Name="txtbName" Width="150"/>
+                </StackPanel>
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Отчество"/>
+                    <TextBox Name="txtbPatr" Width="150"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Width="100">
+                
+            </StackPanel>
+            <StackPanel Margin="5">
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Сотрудник"/>
+                    <ComboBox Name="cbxEmp" Width="150" Height="25" ItemsSource="{Binding Source={StaticResource emp}}" DisplayMemberPath="Surname" SelectedValuePath="idEmployee"/>
+                </StackPanel>
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Номер карты"/>
+                    <TextBox x:Name="txtbNCard" IsEnabled="False" Width="150"/>
+                </StackPanel>
+                <StackPanel Margin="2">
+                    <TextBlock Width="150" Text="Номинал"/>
+                    <TextBox x:Name="txtbNominal" Width="150"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnCreate" Content="Создать" Click="btnCreate_Click"/>
+            <Button Name="btncancel" Content="Отменить" Click="btncancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

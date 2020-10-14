@@ -21,29 +21,24 @@ namespace Project
     {
         string id;
         string surn;
-        string name;
-        string patr;
         string telep;
         string bdate;
         string rest;
-        public DopEmpWindow(string id, string surn, string name, string patr, string telep, string bdate, string rest)
+        string role;
+        public DopEmpWindow(string id, string surn, string telep, string bdate, string rest, string role)
         {
             InitializeComponent();
             this.id = id;
             this.surn = surn;
-            this.name = name;
-            this.patr = patr;
             this.telep = telep;
             this.bdate = bdate;
             this.rest = rest;
-
-            txtBirthDate.Text = bdate;
+            this.role = role;
             txtID.Text = id;
             txtSurname.Text = surn;
-            txtPatronymic.Text = patr;
             txtRestoran.Text = rest;
             txtTelephone.Text = telep;
-            txtName.Text = name;
+            txtRole.Text = role;
         }
     }
 }

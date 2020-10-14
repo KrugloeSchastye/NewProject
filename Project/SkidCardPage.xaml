@@ -1,48 +1,44 @@
-﻿<Page x:Class="Project.EmpPage"
+﻿<Page x:Class="Project.SkidCardPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Project"
-      xmlns:core="clr-namespace:Project.Model"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EmpPage">
-
-    <Page.Resources>
-        <core:Restorans x:Key="restorans"/>
-    </Page.Resources>
+      Title="SkidCardPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0">
-            <TextBlock Text="Сотрудники" Style="{StaticResource Header}" Margin="10"/>
+            <TextBlock Text="Скидочные карты" Style="{StaticResource Header}" Margin="10"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Button Content="Добавить" Name="btnAdd" Width="100" Click="btnAdd_Click"/>
+                <Button IsEnabled="False" Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
                 <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
-                <Button Content="Редактировать" x:Name="btnEdit" Width="100" Click="btnEdit_Click"/>
-                <Button Content="Сохранить" Name="btnSave" Width="100" Click="btnSave_Click"/>
                 <StackPanel Orientation="Horizontal">
                     <CheckBox Name="cbxVSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Checked="cbxVSearch_Checked" Unchecked="cbxVSearch_Unchecked"></CheckBox>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Введите фамилию для поиска"></TextBlock>
+                        <TextBlock Text="Введите номер карты для поиска"></TextBlock>
                         <TextBox x:Name="txtbSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Width="180" IsEnabled="False" TextChanged="txtbSearch_TextChanged"></TextBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" Name="dgEmployee" MouseDoubleClick="dgEmployee_MouseDoubleClick">
+        <DataGrid Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" Name="dgSaleCard">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Код" Binding="{Binding idCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridComboBoxColumn Header="Ресторан" ItemsSource="{Binding Source={StaticResource restorans}}" DisplayMemberPath="NameRest" SelectedValueBinding="{Binding Restoran, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idRestoran"/>
-                <DataGridTextColumn Header="Роль" Binding="{Binding Roles.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Employee.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Номер карты" Binding="{Binding NumberCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Номинал" Binding="{Binding Nominal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

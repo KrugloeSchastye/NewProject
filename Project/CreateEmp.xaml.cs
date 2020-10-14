@@ -36,6 +36,7 @@ namespace Project
                 emp.Telephone = Convert.ToString(txtbTelephone.Text);
                 emp.Restoran = Convert.ToInt32(cbRestorans.SelectedIndex + 1);
                 emp.BirthDate = DateTime.Parse(dpBirthDate.Text);
+                emp.NumberOfSales = 0;
                 db.Employee.Add(emp);
                 db.SaveChanges();
                 Close();

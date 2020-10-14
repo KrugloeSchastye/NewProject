@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project"
         xmlns:core="clr-namespace:Project.Model"
         mc:Ignorable="d"
-        Title="Регистрация заказа" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="CanResize" Closing="Window_Closing">
+        Title="Регистрация заказа" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="None">
 
     <Window.Resources>
         <core:Emp x:Key="emp"/>
@@ -21,42 +21,51 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel>
-                <TextBlock Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+                <TextBlock Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Добавить блюдо" Name="btnAdd" Click="btnAdd_Click"></Button>
-                    <Button Content="Удалить блюдо" Name="btnDel" Click="btnDel_Click"></Button>
-                    <Button Content="Купить сертификат" Name="btnBuySert" IsEnabled="False"></Button>
-                    <Button Content="Сохранить" Name="btnSave" Click="btnSave_Click"></Button>
+                    <Button Content="Добавить блюдо" Name="btnAdd" Click="btnAdd_Click" IsEnabled="False"></Button>
+                    <Button Content="Удалить блюдо" Name="btnDel" Click="btnDel_Click" IsEnabled="False"></Button>
+                    <!--<Button Content="Купить сертификат" Name="btnBuySert" IsEnabled="False"></Button>-->
+                    <Button Content="Сохранить" Name="btnSave" Click="btnSave_Click" IsEnabled="False"></Button>
+                    <Button Content="Отмена" Name="btnClose" Click="btnClose_Click"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <StackPanel Margin="5" IsEnabled="False">
+                <StackPanel Margin="5">
                     <TextBlock Text="Сотрудник"/>
-                    <ComboBox Width="120" Name="cbEmployee" ItemsSource="{Binding Source={StaticResource emp}}" DisplayMemberPath="Surname" SelectedValuePath="idEmployee"></ComboBox>
+                    <ComboBox Width="100" Name="cbEmployee" ItemsSource="{Binding Source={StaticResource emp}}" DisplayMemberPath="Surname" SelectedValuePath="idEmployee" SelectionChanged="cbEmployee_SelectionChanged"></ComboBox>
                 </StackPanel>
                 <StackPanel Margin="5">
                     <TextBlock Text="Стол"/>
-                    <TextBox Width="120" Name="txtbStol" IsEnabled="False"></TextBox>
+                    <TextBox Width="80" Name="txtbStol" IsEnabled="False"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" IsEnabled="False">
                     <CheckBox VerticalAlignment="Center"></CheckBox>
                     <StackPanel Margin="5">
                         <TextBlock Text="Подарочный сертификат"/>
-                        <ComboBox Width="120" Name="cbSert"></ComboBox>
+                        <ComboBox Width="100" Name="cbSert"></ComboBox>
                     </StackPanel>
+                    <TextBlock Margin="5" Name="txtSertCheck" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" IsEnabled="False">
-                    <CheckBox VerticalAlignment="Center"></CheckBox>
+                <StackPanel Orientation="Horizontal" IsEnabled="True">
+                    <CheckBox VerticalAlignment="Center" x:Name="cbSearchSC" Checked="cbSearchSC_Checked" Unchecked="cbSearchSC_Unchecked"></CheckBox>
                     <StackPanel Margin="5">
                         <TextBlock Text="Скидочная карта"/>
-                        <ComboBox Width="120" x:Name="cbSkidCard"/>
+                        <TextBox Width="100" x:Name="txtbSkidCard" TextChanged="txtbSkidCard_TextChanged" IsEnabled="False"/>
                     </StackPanel>
+                    <TextBlock Margin="5" Name="txtSCardCheck" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
-                <GroupBox Header="Итог">
-                    <TextBlock Text="" Name="txtItog" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                </GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Header="Итог">
+                        <TextBlock Text="" Name="txtItog" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </GroupBox>
+                    <GroupBox Header="Итог со скидкой" Visibility="Hidden" Name="gbItogS">
+                        <TextBlock Text="" Name="txtItogS" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </GroupBox>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
+        
         <DataGrid Grid.Row="1" x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource bluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda" />

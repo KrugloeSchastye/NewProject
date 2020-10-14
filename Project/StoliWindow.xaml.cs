@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,29 +32,33 @@ namespace Project
                 MessageBox.Show("Вы не выбрали стол!");
             else
             {
-                Stoli s = cbStoli.SelectedItem as Stoli;
-                int Stol = s.idStola;
-                foreach (var item in db.Stoli)
+                Stoli s = (Stoli)cbStoli.SelectedItem ;
+
+                if (s.IsBusy == false)
                 {
-                    if (Stol == item.idStola)
+                    MessageBox.Show("Стол занят!");
+                }
+                else
+                {
+                    foreach (var i in db.Stoli)
                     {
-                        if (item.IsBusy == false)
+                        if (s.idStola == i.idStola)
                         {
-                            MessageBox.Show("Стол занят!");
-                        }
-                        else
-                        {
-                            new RegZakWindow(Stol).ShowDialog();
-                            this.Close();
+                            i.IsBusy = false;
                         }
                     }
+                    new RegZakWindow(s.idStola).ShowDialog();
+                    this.Close();
                 }
             }
         }
+
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
     }
+
 }

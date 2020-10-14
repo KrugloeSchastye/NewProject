@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegZakPage" IsVisibleChanged="Page_IsVisibleChanged">
-    
+
     <Page.Resources>
         <core:Stol x:Key="listStoli"/>
         <core:Bluda x:Key="listBluda"/>
@@ -29,14 +29,16 @@
         </StackPanel>
 
         <DataGrid Grid.Row="1" Name="dgZak" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dgZak_MouseDoubleClick">
-                <DataGrid.Columns>
-                    <DataGridComboBoxColumn Header="Стол" Width="auto" ItemsSource="{Binding Source={StaticResource listStoli}}" DisplayMemberPath="NameStola" SelectedValueBinding="{Binding Stol, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idStola"/>
+            <DataGrid.Columns>  
+                <DataGridComboBoxColumn Header="Стол" Width="auto" ItemsSource="{Binding Source={StaticResource listStoli}}" DisplayMemberPath="NameStola" SelectedValueBinding="{Binding Stol, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idStola"/>
                 <DataGridTextColumn Header="Итог" Width="auto" Binding="{Binding SummaZakaza, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Итог со скидкой" Width="auto" Binding="{Binding SummaZakazaS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Открыт" Width="auto" Binding="{Binding DateOpenZakaz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Закрыт" Width="auto" Binding="{Binding DateCloseZakaz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <!--<DataGrid Margin="10" x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Right">
+                <DataGridTextColumn Header="Официант" Width="auto" Binding="{Binding Employee1.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<DataGrid Margin="10" x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Right">
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource listBluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda"/>
                     <DataGridTextColumn Header="Кол-во" Binding="{Binding Kolvo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

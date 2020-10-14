@@ -14,6 +14,13 @@ namespace Project
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.SkidCards = new HashSet<SkidCards>();
+            this.Zakazi = new HashSet<Zakazi>();
+        }
+    
         public int idEmployee { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -21,7 +28,14 @@ namespace Project
         public string Telephone { get; set; }
         public System.DateTime BirthDate { get; set; }
         public int Restoran { get; set; }
+        public int Role { get; set; }
+        public Nullable<int> NumberOfSales { get; set; }
     
         public virtual Restaurants Restaurants { get; set; }
+        public virtual Roles Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SkidCards> SkidCards { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zakazi> Zakazi { get; set; }
     }
 }

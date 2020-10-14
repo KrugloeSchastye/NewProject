@@ -77,6 +77,9 @@
     <Compile Include="CreateEmp.xaml.cs">
       <DependentUpon>CreateEmp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateSaleCard.xaml.cs">
+      <DependentUpon>CreateSaleCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DishPage.xaml.cs">
       <DependentUpon>DishPage.xaml</DependentUpon>
     </Compile>
@@ -127,10 +130,19 @@
       <DependentUpon>RegZakPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Restorans.cs" />
+    <Compile Include="ReportsWindow.xaml.cs">
+      <DependentUpon>ReportsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Restaurants.cs">
       <DependentUpon>KrugloeSchastye.tt</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
+      <DependentUpon>KrugloeSchastye.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkidCardPage.xaml.cs">
+      <DependentUpon>SkidCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SkidCards.cs">
       <DependentUpon>KrugloeSchastye.tt</DependentUpon>
     </Compile>
     <Compile Include="Stoli.cs">
@@ -144,6 +156,9 @@
     </Compile>
     <Compile Include="TableWindow.xaml.cs">
       <DependentUpon>TableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Table_1.cs">
+      <DependentUpon>KrugloeSchastye.tt</DependentUpon>
     </Compile>
     <Compile Include="ZakazBluda.cs">
       <DependentUpon>KrugloeSchastye.tt</DependentUpon>
@@ -167,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateEmp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateSaleCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +228,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegZakPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SkidCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,6 +294,9 @@
     <Resource Include="Resources\table.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\аватарка.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="KrugloeSchastye.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
@@ -277,6 +307,35 @@
       <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
       <LastGenOutput>KrugloeSchastye.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
