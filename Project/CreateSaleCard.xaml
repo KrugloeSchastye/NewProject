@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project"
         xmlns:core="clr-namespace:Project.Model"
         mc:Ignorable="d"
-        Title="CreateSaleCard" Height="300" Width="575" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Создание скидочной карты" Height="300" Width="575" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     
     <Window.Resources>
         <core:Emp x:Key="emp"/>

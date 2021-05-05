@@ -9,8 +9,14 @@
       Title="MainPage">
 
     <Grid>
-        <StackPanel Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <TextBlock Text="Главное меню" Style="{StaticResource Header}" Margin="5"/>
+        </StackPanel>
+        <StackPanel Margin="10" Grid.Row="1">
             <Button Content="Сотрудники" Name="btnEmp" Click="btnEmp_Click"></Button>
             <Button Content="Блюда" Name="btnBludo" Click="btnBludo_Click"></Button>
             <Button Content="Заказы" Name="btnZak" Click="btnZak_Click"></Button>

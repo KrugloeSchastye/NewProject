@@ -9,8 +9,9 @@
         Title="Создание сотрудников" Height="280" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <core:Restorans x:Key="restorans"/>
+        <core:Role x:Key="role"/>
     </Window.Resources>
-    
+
     <StackPanel>
         <TextBlock Text="Добавление сотрудника" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  HorizontalAlignment="Center">
@@ -29,6 +30,10 @@
                 <DatePicker x:Name="dpBirthDate" Height="25"/>
                 <TextBlock Text="Ресторан"/>
                 <ComboBox x:Name="cbRestorans" ItemsSource="{Binding Source={StaticResource restorans}}" DisplayMemberPath="NameRest" SelectedValuePath="idRestoran"/>
+            </StackPanel>
+            <StackPanel Margin="10" Width="110">
+                <TextBlock Text="Роль"/>
+                <ComboBox x:Name="cbRole" ItemsSource="{Binding Source={StaticResource ResourceKey=role}}" DisplayMemberPath="Name" SelectedValuePath="idRole"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

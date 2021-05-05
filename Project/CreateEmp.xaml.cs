@@ -37,6 +37,8 @@ namespace Project
                 emp.Restoran = Convert.ToInt32(cbRestorans.SelectedIndex + 1);
                 emp.BirthDate = DateTime.Parse(dpBirthDate.Text);
                 emp.NumberOfSales = 0;
+                Roles rol = cbRole.SelectedItem as Roles;
+                emp.Role = rol.idRole;
                 db.Employee.Add(emp);
                 db.SaveChanges();
                 Close();

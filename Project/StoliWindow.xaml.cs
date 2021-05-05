@@ -59,6 +59,11 @@ namespace Project
         {
             Close();
         }
+
+        private void cbStoli_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }

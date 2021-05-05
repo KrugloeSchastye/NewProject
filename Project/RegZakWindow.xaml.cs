@@ -177,6 +177,7 @@ namespace Project
         {
             string nCard = txtbSkidCard.Text;
 
+
             foreach (var item in db.SkidCards)
             {
                 if (item.NumberCard == nCard)
