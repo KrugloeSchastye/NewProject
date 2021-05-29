@@ -38,7 +38,14 @@
         
         <DataGrid Grid.Row="1" Name="dgDish" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Код" Binding="{Binding idBluda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTemplateColumn Width="210">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Image}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Код" Binding="{Binding idBluda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Вес" Binding="{Binding Wheight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Состав" Binding="{Binding Struct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

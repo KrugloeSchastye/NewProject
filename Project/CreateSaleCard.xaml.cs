@@ -19,7 +19,7 @@ namespace Project
     /// </summary>
     public partial class CreateSaleCard : Window
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         int count = 1;
         public CreateSaleCard()
         {

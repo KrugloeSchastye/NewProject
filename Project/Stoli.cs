@@ -17,6 +17,7 @@ namespace Project
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Stoli()
         {
+            this.BookingStol = new HashSet<BookingStol>();
             this.Zakazi = new HashSet<Zakazi>();
         }
     
@@ -24,6 +25,8 @@ namespace Project
         public string NameStola { get; set; }
         public bool IsBusy { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BookingStol> BookingStol { get; set; }
         public virtual IsBusy IsBusy1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zakazi> Zakazi { get; set; }

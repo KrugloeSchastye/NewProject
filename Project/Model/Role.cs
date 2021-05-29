@@ -9,7 +9,7 @@ namespace Project.Model
 {
     public class Role : ObservableCollection<Roles>
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public Role()
         {
             var q =

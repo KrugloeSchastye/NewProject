@@ -9,7 +9,7 @@ namespace Project.Model
 {
     public class Restorans : ObservableCollection<Restaurants>
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public Restorans()
         {
             var q =

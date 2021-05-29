@@ -9,7 +9,7 @@ namespace Project.Model
 {
     public class Bluda : ObservableCollection<Menu>
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public Bluda()
         {
             var q =

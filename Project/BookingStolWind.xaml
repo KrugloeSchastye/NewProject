@@ -1,0 +1,23 @@
+﻿<Window x:Class="Project.BookingStolWind"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="Бронирование столиков" Height="450" Width="800">
+    <Grid>
+        <DataGrid Name="dgStol" HorizontalAlignment="Left" Height="310" Margin="170,80,0,0" VerticalAlignment="Top" Width="612" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№ стола" Width="100" Binding="{Binding idStol}"/>
+                <DataGridTextColumn Header="Дата и время бронирования" Binding="{Binding DateBoo0king  }" Width="200"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding ClientFIO}" Width="312"/>
+            </DataGrid.Columns>                     
+        </DataGrid>
+        <Button Content="Добавить" Name="btnAddBookingStol" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click"/>
+        <Button Content="Отменить бронирование" Name="btnRemoveBookingStol" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Редактировать" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBlock TextAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Бронирование столиков" FontSize="18" VerticalAlignment="Top" Height="41"/>
+
+    </Grid>
+</Window>

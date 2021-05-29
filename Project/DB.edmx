@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище user3Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище user2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BookingStol">
           <Key>
             <PropertyRef Name="id" />
@@ -25,15 +25,7 @@
           <Property Name="Telephone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="BirthDate" Type="smalldatetime" Nullable="false" />
           <Property Name="Restoran" Type="int" Nullable="false" />
-          <Property Name="Role" Type="int" Nullable="false" />
-          <Property Name="NumberOfSales" Type="int" />
-        </EntityType>
-        <EntityType Name="IsBusy">
-          <Key>
-            <PropertyRef Name="idBusy" />
-          </Key>
-          <Property Name="idBusy" Type="bit" Nullable="false" />
-          <Property Name="textBusy" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdLogin" Type="int" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -51,11 +43,10 @@
           </Key>
           <Property Name="idBluda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameBludo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Wheight" Type="nvarchar(max)" />
-          <Property Name="Struct" Type="nvarchar(max)" />
+          <Property Name="Wheight" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Struct" Type="nvarchar(max)" Nullable="false" />
           <Property Name="RazdelMenu" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Razdeli">
           <Key>
@@ -69,10 +60,10 @@
             <PropertyRef Name="idRestoran" />
           </Key>
           <Property Name="idRestoran" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameRest" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NameRest" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Telephone" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Leader" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Leader" Type="int" Nullable="false" />
           <Property Name="OpenDate" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
@@ -82,18 +73,6 @@
           <Property Name="idRole" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="SkidCards">
-          <Key>
-            <PropertyRef Name="idCard" />
-          </Key>
-          <Property Name="idCard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="idEmployee" Type="int" Nullable="false" />
-          <Property Name="NumberCard" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Nominal" Type="nvarchar" MaxLength="10" Nullable="false" />
-        </EntityType>
         <EntityType Name="Stoli">
           <Key>
             <PropertyRef Name="idStola" />
@@ -101,20 +80,6 @@
           <Property Name="idStola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameStola" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsBusy" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Table_1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IsBusy" Type="bit" />
-        </EntityType>
-        <EntityType Name="Table1">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ФИО" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ZakazBluda">
           <Key>
@@ -133,12 +98,10 @@
           </Key>
           <Property Name="idZakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stol" Type="int" Nullable="false" />
-          <Property Name="SummaZakaza" Type="float" Nullable="false" />
-          <Property Name="SummaZakazaS" Type="float" />
+          <Property Name="SummaZakaza" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="datetime" />
           <Property Name="DateCloseZakaz" Type="datetime" />
-          <Property Name="Employee" Type="int" Nullable="false" />
-          <Property Name="Closed" Type="bit" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_BookingStol_Stoli">
           <End Role="Stoli" Type="Self.Stoli" Multiplicity="1" />
@@ -152,6 +115,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_Restaurants">
           <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -161,18 +136,6 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="Restoran" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRole" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,30 +160,6 @@
             </Principal>
             <Dependent Role="Menu">
               <PropertyRef Name="RazdelMenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SkidCards_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="SkidCards" Type="Self.SkidCards" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="idEmployee" />
-            </Principal>
-            <Dependent Role="SkidCards">
-              <PropertyRef Name="idEmployee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stoli_IsBusy">
-          <End Role="IsBusy" Type="Self.IsBusy" Multiplicity="1" />
-          <End Role="Stoli" Type="Self.Stoli" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IsBusy">
-              <PropertyRef Name="idBusy" />
-            </Principal>
-            <Dependent Role="Stoli">
-              <PropertyRef Name="IsBusy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -256,7 +195,7 @@
               <PropertyRef Name="idEmployee" />
             </Principal>
             <Dependent Role="Zakazi">
-              <PropertyRef Name="Employee" />
+              <PropertyRef Name="IdEmployee" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -272,31 +211,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище user3ModelContainer">
+        <EntityContainer Name="Хранилище user2ModelContainer">
           <EntitySet Name="BookingStol" EntityType="Self.BookingStol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IsBusy" EntityType="Self.IsBusy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Razdeli" EntityType="Self.Razdeli" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SkidCards" EntityType="Self.SkidCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stoli" EntityType="Self.Stoli" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table1" EntityType="Self.Table1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZakazBluda" EntityType="Self.ZakazBluda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakazi" EntityType="Self.Zakazi" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookingStol_Stoli" Association="Self.FK_BookingStol_Stoli">
             <End Role="Stoli" EntitySet="Stoli" />
             <End Role="BookingStol" EntitySet="BookingStol" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Restaurants" Association="Self.FK_Employee_Restaurants">
-            <End Role="Restaurants" EntitySet="Restaurants" />
+          <AssociationSet Name="FK_Employee_Login" Association="Self.FK_Employee_Login">
+            <End Role="Login" EntitySet="Login" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Roles" Association="Self.FK_Employee_Roles">
-            <End Role="Roles" EntitySet="Roles" />
+          <AssociationSet Name="FK_Employee_Restaurants" Association="Self.FK_Employee_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_Login_Roles" Association="Self.FK_Login_Roles">
@@ -306,14 +241,6 @@
           <AssociationSet Name="FK_Menu_Razdeli" Association="Self.FK_Menu_Razdeli">
             <End Role="Razdeli" EntitySet="Razdeli" />
             <End Role="Menu" EntitySet="Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SkidCards_Employee" Association="Self.FK_SkidCards_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="SkidCards" EntitySet="SkidCards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stoli_IsBusy" Association="Self.FK_Stoli_IsBusy">
-            <End Role="IsBusy" EntitySet="IsBusy" />
-            <End Role="Stoli" EntitySet="Stoli" />
           </AssociationSet>
           <AssociationSet Name="FK_ZakazBluda_Menu" Association="Self.FK_ZakazBluda_Menu">
             <End Role="Menu" EntitySet="Menu" />
@@ -332,10 +259,11 @@
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="user3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="user2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BookingStol">
           <Key>
             <PropertyRef Name="id" />
@@ -357,20 +285,10 @@
           <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Restoran" Type="Int32" Nullable="false" />
-          <Property Name="Role" Type="Int32" Nullable="false" />
-          <Property Name="NumberOfSales" Type="Int32" />
+          <Property Name="IdLogin" Type="Int32" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Employee_Login" FromRole="Employee" ToRole="Login" />
           <NavigationProperty Name="Restaurants" Relationship="Self.FK_Employee_Restaurants" FromRole="Employee" ToRole="Restaurants" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK_Employee_Roles" FromRole="Employee" ToRole="Roles" />
-          <NavigationProperty Name="SkidCards" Relationship="Self.FK_SkidCards_Employee" FromRole="Employee" ToRole="SkidCards" />
           <NavigationProperty Name="Zakazi" Relationship="Self.FK_Zakazi_Employee" FromRole="Employee" ToRole="Zakazi" />
-        </EntityType>
-        <EntityType Name="IsBusy">
-          <Key>
-            <PropertyRef Name="idBusy" />
-          </Key>
-          <Property Name="idBusy" Type="Boolean" Nullable="false" />
-          <Property Name="textBusy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Stoli" Relationship="Self.FK_Stoli_IsBusy" FromRole="IsBusy" ToRole="Stoli" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -381,6 +299,7 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Role" Type="Int32" Nullable="false" />
           <Property Name="CountWrong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Login" FromRole="Login" ToRole="Employee" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Login_Roles" FromRole="Login" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Menu">
@@ -389,13 +308,12 @@
           </Key>
           <Property Name="idBluda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameBludo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Wheight" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Struct" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Wheight" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Struct" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RazdelMenu" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Razdeli" Relationship="Self.FK_Menu_Razdeli" FromRole="Menu" ToRole="Razdeli" />
           <NavigationProperty Name="ZakazBluda" Relationship="Self.FK_ZakazBluda_Menu" FromRole="Menu" ToRole="ZakazBluda" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Razdeli">
           <Key>
@@ -410,10 +328,10 @@
             <PropertyRef Name="idRestoran" />
           </Key>
           <Property Name="idRestoran" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameRest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameRest" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Leader" Type="Int32" Nullable="false" />
           <Property Name="OpenDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Restaurants" FromRole="Restaurants" ToRole="Employee" />
         </EntityType>
@@ -423,21 +341,7 @@
           </Key>
           <Property Name="idRole" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Roles" FromRole="Roles" ToRole="Employee" />
           <NavigationProperty Name="Login" Relationship="Self.FK_Login_Roles" FromRole="Roles" ToRole="Login" />
-        </EntityType>
-        <EntityType Name="SkidCards">
-          <Key>
-            <PropertyRef Name="idCard" />
-          </Key>
-          <Property Name="idCard" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="idEmployee" Type="Int32" Nullable="false" />
-          <Property Name="NumberCard" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nominal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_SkidCards_Employee" FromRole="SkidCards" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Stoli">
           <Key>
@@ -447,22 +351,7 @@
           <Property Name="NameStola" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsBusy" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BookingStol" Relationship="Self.FK_BookingStol_Stoli" FromRole="Stoli" ToRole="BookingStol" />
-          <NavigationProperty Name="IsBusy1" Relationship="Self.FK_Stoli_IsBusy" FromRole="Stoli" ToRole="IsBusy" />
           <NavigationProperty Name="Zakazi" Relationship="Self.FK_Zakazi_Stoli" FromRole="Stoli" ToRole="Zakazi" />
-        </EntityType>
-        <EntityType Name="Table_1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IsBusy" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="Table1">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ФИО" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ZakazBluda">
           <Key>
@@ -483,13 +372,11 @@
           </Key>
           <Property Name="idZakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Stol" Type="Int32" Nullable="false" />
-          <Property Name="SummaZakaza" Type="Double" Nullable="false" />
-          <Property Name="SummaZakazaS" Type="Double" />
+          <Property Name="SummaZakaza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOpenZakaz" Type="DateTime" Precision="3" />
           <Property Name="DateCloseZakaz" Type="DateTime" Precision="3" />
-          <Property Name="Employee" Type="Int32" Nullable="false" />
-          <Property Name="Closed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Zakazi_Employee" FromRole="Zakazi" ToRole="Employee" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Zakazi_Employee" FromRole="Zakazi" ToRole="Employee" />
           <NavigationProperty Name="Stoli" Relationship="Self.FK_Zakazi_Stoli" FromRole="Zakazi" ToRole="Stoli" />
           <NavigationProperty Name="ZakazBluda" Relationship="Self.FK_ZakazBluda_Zakazi" FromRole="Zakazi" ToRole="ZakazBluda" />
         </EntityType>
@@ -505,6 +392,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_Restaurants">
           <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -517,30 +416,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRole" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SkidCards_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="SkidCards" Type="Self.SkidCards" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="idEmployee" />
-            </Principal>
-            <Dependent Role="SkidCards">
-              <PropertyRef Name="idEmployee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Zakazi_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Zakazi" Type="Self.Zakazi" Multiplicity="*" />
@@ -549,19 +424,7 @@
               <PropertyRef Name="idEmployee" />
             </Principal>
             <Dependent Role="Zakazi">
-              <PropertyRef Name="Employee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stoli_IsBusy">
-          <End Role="IsBusy" Type="Self.IsBusy" Multiplicity="1" />
-          <End Role="Stoli" Type="Self.Stoli" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IsBusy">
-              <PropertyRef Name="idBusy" />
-            </Principal>
-            <Dependent Role="Stoli">
-              <PropertyRef Name="IsBusy" />
+              <PropertyRef Name="IdEmployee" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -625,44 +488,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="user3Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="user2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BookingStol" EntityType="Self.BookingStol" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="IsBusy" EntityType="Self.IsBusy" />
           <EntitySet Name="Login" EntityType="Self.Login" />
           <EntitySet Name="Menu" EntityType="Self.Menu" />
           <EntitySet Name="Razdeli" EntityType="Self.Razdeli" />
           <EntitySet Name="Restaurants" EntityType="Self.Restaurants" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
-          <EntitySet Name="SkidCards" EntityType="Self.SkidCards" />
           <EntitySet Name="Stoli" EntityType="Self.Stoli" />
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" />
-          <EntitySet Name="Table1" EntityType="Self.Table1" />
           <EntitySet Name="ZakazBluda" EntityType="Self.ZakazBluda" />
           <EntitySet Name="Zakazi" EntityType="Self.Zakazi" />
           <AssociationSet Name="FK_BookingStol_Stoli" Association="Self.FK_BookingStol_Stoli">
             <End Role="Stoli" EntitySet="Stoli" />
             <End Role="BookingStol" EntitySet="BookingStol" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employee_Login" Association="Self.FK_Employee_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employee_Restaurants" Association="Self.FK_Employee_Restaurants">
             <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Roles" Association="Self.FK_Employee_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SkidCards_Employee" Association="Self.FK_SkidCards_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="SkidCards" EntitySet="SkidCards" />
-          </AssociationSet>
           <AssociationSet Name="FK_Zakazi_Employee" Association="Self.FK_Zakazi_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Zakazi" EntitySet="Zakazi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stoli_IsBusy" Association="Self.FK_Stoli_IsBusy">
-            <End Role="IsBusy" EntitySet="IsBusy" />
-            <End Role="Stoli" EntitySet="Stoli" />
           </AssociationSet>
           <AssociationSet Name="FK_Login_Roles" Association="Self.FK_Login_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -690,9 +541,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище user3ModelContainer" CdmEntityContainer="user3Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user2ModelContainer" CdmEntityContainer="user2Entities">
           <EntitySetMapping Name="BookingStol">
-            <EntityTypeMapping TypeName="user3Model.BookingStol">
+            <EntityTypeMapping TypeName="user2Model.BookingStol">
               <MappingFragment StoreEntitySet="BookingStol">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idStol" ColumnName="idStol" />
@@ -702,7 +553,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="user3Model.Employee">
+            <EntityTypeMapping TypeName="user2Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -711,21 +562,12 @@
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Restoran" ColumnName="Restoran" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="NumberOfSales" ColumnName="NumberOfSales" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IsBusy">
-            <EntityTypeMapping TypeName="user3Model.IsBusy">
-              <MappingFragment StoreEntitySet="IsBusy">
-                <ScalarProperty Name="idBusy" ColumnName="idBusy" />
-                <ScalarProperty Name="textBusy" ColumnName="textBusy" />
+                <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="user3Model.Login">
+            <EntityTypeMapping TypeName="user2Model.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -736,9 +578,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menu">
-            <EntityTypeMapping TypeName="user3Model.Menu">
+            <EntityTypeMapping TypeName="user2Model.Menu">
               <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="idBluda" ColumnName="idBluda" />
                 <ScalarProperty Name="NameBludo" ColumnName="NameBludo" />
                 <ScalarProperty Name="Wheight" ColumnName="Wheight" />
@@ -749,7 +590,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Razdeli">
-            <EntityTypeMapping TypeName="user3Model.Razdeli">
+            <EntityTypeMapping TypeName="user2Model.Razdeli">
               <MappingFragment StoreEntitySet="Razdeli">
                 <ScalarProperty Name="idRazdel" ColumnName="idRazdel" />
                 <ScalarProperty Name="NameRazdela" ColumnName="NameRazdela" />
@@ -757,7 +598,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Restaurants">
-            <EntityTypeMapping TypeName="user3Model.Restaurants">
+            <EntityTypeMapping TypeName="user2Model.Restaurants">
               <MappingFragment StoreEntitySet="Restaurants">
                 <ScalarProperty Name="idRestoran" ColumnName="idRestoran" />
                 <ScalarProperty Name="NameRest" ColumnName="NameRest" />
@@ -769,28 +610,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="user3Model.Roles">
+            <EntityTypeMapping TypeName="user2Model.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="idRole" ColumnName="idRole" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SkidCards">
-            <EntityTypeMapping TypeName="user3Model.SkidCards">
-              <MappingFragment StoreEntitySet="SkidCards">
-                <ScalarProperty Name="idCard" ColumnName="idCard" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
-                <ScalarProperty Name="NumberCard" ColumnName="NumberCard" />
-                <ScalarProperty Name="Nominal" ColumnName="Nominal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Stoli">
-            <EntityTypeMapping TypeName="user3Model.Stoli">
+            <EntityTypeMapping TypeName="user2Model.Stoli">
               <MappingFragment StoreEntitySet="Stoli">
                 <ScalarProperty Name="idStola" ColumnName="idStola" />
                 <ScalarProperty Name="NameStola" ColumnName="NameStola" />
@@ -798,24 +626,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table_1">
-            <EntityTypeMapping TypeName="user3Model.Table_1">
-              <MappingFragment StoreEntitySet="Table_1">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IsBusy" ColumnName="IsBusy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Table1">
-            <EntityTypeMapping TypeName="user3Model.Table1">
-              <MappingFragment StoreEntitySet="Table1">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ZakazBluda">
-            <EntityTypeMapping TypeName="user3Model.ZakazBluda">
+            <EntityTypeMapping TypeName="user2Model.ZakazBluda">
               <MappingFragment StoreEntitySet="ZakazBluda">
                 <ScalarProperty Name="idZakazBludo" ColumnName="idZakazBludo" />
                 <ScalarProperty Name="idZakaza" ColumnName="idZakaza" />
@@ -827,16 +639,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zakazi">
-            <EntityTypeMapping TypeName="user3Model.Zakazi">
+            <EntityTypeMapping TypeName="user2Model.Zakazi">
               <MappingFragment StoreEntitySet="Zakazi">
                 <ScalarProperty Name="idZakaza" ColumnName="idZakaza" />
                 <ScalarProperty Name="Stol" ColumnName="Stol" />
                 <ScalarProperty Name="SummaZakaza" ColumnName="SummaZakaza" />
-                <ScalarProperty Name="SummaZakazaS" ColumnName="SummaZakazaS" />
                 <ScalarProperty Name="DateOpenZakaz" ColumnName="DateOpenZakaz" />
                 <ScalarProperty Name="DateCloseZakaz" ColumnName="DateCloseZakaz" />
-                <ScalarProperty Name="Employee" ColumnName="Employee" />
-                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,17 +22,19 @@ namespace Project
     /// </summary>
     public partial class RegZakPage : Page
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public RegZakPage()
         {
             InitializeComponent();
-            dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+            dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
+            dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             new StoliWindow().ShowDialog();
-            dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+            dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
+            dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
         }
 
         private void dgZak_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -49,7 +53,8 @@ namespace Project
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+            dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
+            dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
         }
 
         private void btnCloseZak_Click(object sender, RoutedEventArgs e)
@@ -92,6 +97,7 @@ namespace Project
                         }
                     }
                     db.SaveChanges();
+                    
                 }
                 else
                 {
@@ -103,6 +109,7 @@ namespace Project
                 MessageBox.Show("Выберите заказ!");
             }
         }
+
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
@@ -129,9 +136,24 @@ namespace Project
                         }
                     }
                     db.SaveChanges();
-                    dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+                    dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList(); 
+                    dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
                 }
             }
+        }
+
+        private void dgZakC_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Zakazi zakazi = dgZakC.SelectedItem as Zakazi;
+            int idZak = Convert.ToInt32(zakazi.idZakaza);
+
+            //dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
+            int stol = Convert.ToInt32(zakazi.Stol);
+            double summ = Convert.ToInt32(zakazi.SummaZakaza);
+            double summS = Convert.ToDouble(zakazi.SummaZakazaS);
+            string open = Convert.ToString(zakazi.DateOpenZakaz);
+            string close = Convert.ToString(zakazi.DateCloseZakaz);
+            new ZakazInfoWindow(idZak, stol, summ, summS, open, close).ShowDialog();
         }
     }
 }

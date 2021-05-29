@@ -26,13 +26,15 @@ namespace Project
         public AuthWindow()
         {
             InitializeComponent();
+            BookingStolWind bookingStol = new BookingStolWind();
+            bookingStol.Show();
         }
         string Login { get; set; }
         string Dates { get; set; }
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
             bool enter = false;
-            KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+            user3Entities db = new user3Entities();
 
             Login itemLogin = db.Login.Where(i => i.UserName == txtbLogin.Text).FirstOrDefault();
             if (itemLogin == null)
@@ -72,7 +74,7 @@ namespace Project
                 }
             }
         }
-        public async void Block(Login item, KrugloeSchastyeEntities db)
+        public async void Block(Login item, user3Entities db)
         {
             TimeSpan timeSpan = new TimeSpan(0, 0, 5);
             if (item.CountWrong >= 5 && item.UserName == "Admin")

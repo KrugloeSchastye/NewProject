@@ -20,7 +20,7 @@ namespace Project
     /// </summary>
     public partial class RegZakWindow : Window
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         int Stol;
         int idZak;
         double Summa;
@@ -146,7 +146,7 @@ namespace Project
                 Employee emp = cbEmployee.SelectedItem as Employee;
                 Zakazi zak = new Zakazi();
                 zak.Employee = emp.idEmployee;
-                db.SaveChanges();
+               // db.SaveChanges();
                 foreach (var item in db.Zakazi)
                 {
                     if (item.idZakaza == idZak)
@@ -176,26 +176,41 @@ namespace Project
         private void txtbSkidCard_TextChanged(object sender, TextChangedEventArgs e)
         {
             string nCard = txtbSkidCard.Text;
+            user3Entities db1 = new user3Entities();
 
-
-            foreach (var item in db.SkidCards)
+            SkidCards ItemSkidCart=db.SkidCards.Where(i => i.NumberCard == nCard).FirstOrDefault();
+            if (ItemSkidCart != null)
             {
-                if (item.NumberCard == nCard)
-                {
-                    txtSCardCheck.Text = "Проверен";
-                    SkidCard = double.Parse(item.Nominal);
-                    txtItogS.Text = Convert.ToString(Summa - (Summa * SkidCard));
-                    SummaS = Summa - (Summa * SkidCard);
-                }
-                else
-                {
-                    txtSCardCheck.Text = "Ошибка";
-                    SkidCard = 0;
-                    SummaS = 0;
-                    db.SaveChanges();
-                    txtItogS.Text = "";
-                }
+                txtSCardCheck.Text = "Проверен";
+                SkidCard = double.Parse(ItemSkidCart.Nominal);
+                txtItogS.Text = Convert.ToString(Summa - (Summa * SkidCard));
+                SummaS = Summa - (Summa * SkidCard);
             }
+            else
+            {
+                txtSCardCheck.Text = "Ошибка";
+            }
+
+
+
+            //foreach (var item in db.SkidCards)
+            //{
+            //    if (item.NumberCard == nCard)
+            //    {
+            //        txtSCardCheck.Text = "Проверен";
+            //        SkidCard = double.Parse(item.Nominal);
+            //        txtItogS.Text = Convert.ToString(Summa - (Summa * SkidCard));
+            //        SummaS = Summa - (Summa * SkidCard);
+            //    }
+            //    else
+            //    {
+            //        txtSCardCheck.Text = "Ошибка";
+            //        SkidCard = 0;
+            //        SummaS = 0;
+            //        db.SaveChanges();
+            //        txtItogS.Text = "";
+            //    }
+            //}
         }
 
         private void cbSearchSC_Checked(object sender, RoutedEventArgs e)

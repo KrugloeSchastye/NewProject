@@ -9,7 +9,7 @@ namespace Project.Model
 {
     public class Emp : ObservableCollection<Employee>
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public Emp()
         {
             var q =

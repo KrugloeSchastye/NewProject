@@ -13,10 +13,10 @@ namespace Project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class user3Entities : DbContext
+    public partial class user2Entities : DbContext
     {
-        public user3Entities()
-            : base("name=user3Entities")
+        public user2Entities()
+            : base("name=user2Entities")
         {
         }
     
@@ -27,16 +27,12 @@ namespace Project
     
         public virtual DbSet<BookingStol> BookingStol { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<IsBusy> IsBusy { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<Razdeli> Razdeli { get; set; }
         public virtual DbSet<Restaurants> Restaurants { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<SkidCards> SkidCards { get; set; }
         public virtual DbSet<Stoli> Stoli { get; set; }
-        public virtual DbSet<Table_1> Table_1 { get; set; }
-        public virtual DbSet<Table1> Table1 { get; set; }
         public virtual DbSet<ZakazBluda> ZakazBluda { get; set; }
         public virtual DbSet<Zakazi> Zakazi { get; set; }
     }

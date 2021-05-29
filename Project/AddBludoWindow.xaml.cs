@@ -19,7 +19,7 @@ namespace Project
     /// </summary>
     public partial class AddBludoWindow : Window
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         int idZak;
         public AddBludoWindow(int idZak)
         {

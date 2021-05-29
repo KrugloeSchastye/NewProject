@@ -9,7 +9,7 @@ namespace Project.Model
 {
     class Razdel : ObservableCollection<Razdeli>
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public Razdel()
         {
             var q =

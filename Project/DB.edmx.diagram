@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4359575218de42ad9f6a2a1bf2303fda" Name="Diagram1">
+        <EntityTypeShape EntityType="user2Model.BookingStol" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Employee" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Login" Width="1.5" PointX="1.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Menu" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Razdeli" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Restaurants" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Roles" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Stoli" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.ZakazBluda" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user2Model.Zakazi" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="user2Model.FK_BookingStol_Stoli" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Employee_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Employee_Restaurants" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Zakazi_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Login_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Menu_Razdeli" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_ZakazBluda_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_Zakazi_Stoli" ManuallyRouted="false" />
+        <AssociationConnector Association="user2Model.FK_ZakazBluda_Zakazi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

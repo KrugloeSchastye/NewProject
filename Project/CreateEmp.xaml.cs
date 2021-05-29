@@ -19,7 +19,7 @@ namespace Project
     /// </summary>
     public partial class CreateEmp : Window
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public CreateEmp()
         {
             InitializeComponent();

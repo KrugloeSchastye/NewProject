@@ -20,7 +20,7 @@ namespace Project
     /// </summary>
     public partial class DishPage : Page
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         public DishPage()
         {
             InitializeComponent();

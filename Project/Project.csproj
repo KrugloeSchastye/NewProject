@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -49,8 +52,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,6 +77,15 @@
     <Compile Include="AddBludoWindow.xaml.cs">
       <DependentUpon>AddBludoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookingStol.cs">
+      <DependentUpon>KrugloeSchastye.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingStolWind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingStolWind.Designer.cs">
+      <DependentUpon>BookingStolWind.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateDish.xaml.cs">
       <DependentUpon>CreateDish.xaml</DependentUpon>
     </Compile>
@@ -80,6 +94,9 @@
     </Compile>
     <Compile Include="CreateSaleCard.xaml.cs">
       <DependentUpon>CreateSaleCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetaliBookingWind.xaml.cs">
+      <DependentUpon>DetaliBookingWind.xaml</DependentUpon>
     </Compile>
     <Compile Include="DishPage.xaml.cs">
       <DependentUpon>DishPage.xaml</DependentUpon>
@@ -153,8 +170,11 @@
     <Compile Include="StoliWindow.xaml.cs">
       <DependentUpon>StoliWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Table1.cs">
       <DependentUpon>KrugloeSchastye.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TablesWindow.xaml.cs">
+      <DependentUpon>TablesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TableWindow.xaml.cs">
       <DependentUpon>TableWindow.xaml</DependentUpon>
@@ -188,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateSaleCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetaliBookingWind.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,6 +269,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TablesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,6 +297,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="BookingStolWind.resx">
+      <DependentUpon>BookingStolWind.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -299,18 +330,6 @@
     <Resource Include="Resources\аватарка.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="KrugloeSchastye.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
-      <LastGenOutput>KrugloeSchastye.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="KrugloeSchastye.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
-      <LastGenOutput>KrugloeSchastye.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -338,6 +357,20 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KrugloeSchastye.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
+      <LastGenOutput>KrugloeSchastye.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="KrugloeSchastye.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KrugloeSchastye.edmx</DependentUpon>
+      <LastGenOutput>KrugloeSchastye.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Resources\столики.png" />
+    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

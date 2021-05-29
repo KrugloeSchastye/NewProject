@@ -26,6 +26,7 @@ namespace Project
         public string Struct { get; set; }
         public int RazdelMenu { get; set; }
         public int Price { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual Razdeli Razdeli { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

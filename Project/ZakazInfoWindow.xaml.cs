@@ -19,7 +19,7 @@ namespace Project
     /// </summary>
     public partial class ZakazInfoWindow : Window
     {
-        KrugloeSchastyeEntities db = new KrugloeSchastyeEntities();
+        user3Entities db = new user3Entities();
         int idZak;
         int stol;
         double summ;
