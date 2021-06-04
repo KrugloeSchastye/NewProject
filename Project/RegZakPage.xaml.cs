@@ -23,16 +23,22 @@ namespace Project
     public partial class RegZakPage : Page
     {
         user3Entities db = new user3Entities();
-        public RegZakPage()
+        string Login;
+        public RegZakPage(string Login)
         {
             InitializeComponent();
+
+            this.Login = Login;
+
             dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
             dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            new StoliWindow().ShowDialog();
+            //new StoliWindow().ShowDialog();
+            string titl = "Выбор стола";
+            new TablesWindow(titl,Login).ShowDialog();
             dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
             dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
         }
@@ -40,15 +46,15 @@ namespace Project
         private void dgZak_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Zakazi zakazi = dgZak.SelectedItem as Zakazi;
-            int idZak = Convert.ToInt32(zakazi.idZakaza);
+            //int idZak = Convert.ToInt32(zakazi.idZakaza);
 
-            //dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
-            int stol = Convert.ToInt32(zakazi.Stol);
-            double summ = Convert.ToInt32(zakazi.SummaZakaza);
-            double summS = Convert.ToDouble(zakazi.SummaZakazaS);
-            string open = Convert.ToString(zakazi.DateOpenZakaz);
-            string close = Convert.ToString(zakazi.DateCloseZakaz);
-            new ZakazInfoWindow(idZak, stol, summ, summS, open, close).ShowDialog();
+            ////dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
+            //int stol = Convert.ToInt32(zakazi.Stol);
+            //double summ = Convert.ToInt32(zakazi.SummaZakaza);
+            //double summS = Convert.ToDouble(zakazi.SummaZakazaS);
+            //string open = Convert.ToString(zakazi.DateOpenZakaz);
+            //string close = Convert.ToString(zakazi.DateCloseZakaz);
+            new RegOrders(zakazi.Stol, zakazi.idZakaza, Login).ShowDialog();
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -146,8 +152,6 @@ namespace Project
         {
             Zakazi zakazi = dgZakC.SelectedItem as Zakazi;
             int idZak = Convert.ToInt32(zakazi.idZakaza);
-
-            //dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
             int stol = Convert.ToInt32(zakazi.Stol);
             double summ = Convert.ToInt32(zakazi.SummaZakaza);
             double summS = Convert.ToDouble(zakazi.SummaZakazaS);

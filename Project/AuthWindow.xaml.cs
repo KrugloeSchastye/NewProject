@@ -26,8 +26,8 @@ namespace Project
         public AuthWindow()
         {
             InitializeComponent();
-            BookingStolWind bookingStol = new BookingStolWind();
-            bookingStol.Show();
+            //BookingStolWind bookingStol = new BookingStolWind();
+            //bookingStol.Show();
         }
         string Login { get; set; }
         string Dates { get; set; }

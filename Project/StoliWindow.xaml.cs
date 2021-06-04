@@ -47,7 +47,7 @@ namespace Project
                             i.IsBusy = false;
                         }
                     }
-                    new RegZakWindow(s.idStola).ShowDialog();
+                    //new RegOrders(s.idStola,0,Login).ShowDialog();
                     this.Close();
                 }
             }

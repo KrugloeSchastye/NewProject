@@ -28,6 +28,7 @@ namespace Project
         public Nullable<System.DateTime> DateCloseZakaz { get; set; }
         public int Employee { get; set; }
         public bool Closed { get; set; }
+        public string idSCard { get; set; }
     
         public virtual Employee Employee1 { get; set; }
         public virtual Stoli Stoli { get; set; }

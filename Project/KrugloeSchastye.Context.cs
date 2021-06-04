@@ -35,8 +35,6 @@ namespace Project
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<SkidCards> SkidCards { get; set; }
         public virtual DbSet<Stoli> Stoli { get; set; }
-        public virtual DbSet<Table_1> Table_1 { get; set; }
-        public virtual DbSet<Table1> Table1 { get; set; }
         public virtual DbSet<ZakazBluda> ZakazBluda { get; set; }
         public virtual DbSet<Zakazi> Zakazi { get; set; }
     }

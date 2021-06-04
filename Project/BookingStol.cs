@@ -18,6 +18,7 @@ namespace Project
         public int idStol { get; set; }
         public System.DateTime DateBooking { get; set; }
         public string ClientFIO { get; set; }
+        public string TimeBooking { get; set; }
     
         public virtual Stoli Stoli { get; set; }
     }

@@ -26,11 +26,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStol3 = new System.Windows.Forms.Button();
+            this.btnStol1 = new System.Windows.Forms.Button();
             this.btnStol4 = new System.Windows.Forms.Button();
             this.btnStol5 = new System.Windows.Forms.Button();
             this.btnStol11 = new System.Windows.Forms.Button();
-            this.btnStol7 = new System.Windows.Forms.Button();
             this.btnStol6 = new System.Windows.Forms.Button();
             this.btnStol10 = new System.Windows.Forms.Button();
             this.btnStol9 = new System.Windows.Forms.Button();
@@ -39,17 +40,26 @@
             this.btnStol14 = new System.Windows.Forms.Button();
             this.btnStol12 = new System.Windows.Forms.Button();
             this.btnStol21 = new System.Windows.Forms.Button();
+            this.btnStol20 = new System.Windows.Forms.Button();
             this.btnStol16 = new System.Windows.Forms.Button();
             this.btnStol17 = new System.Windows.Forms.Button();
             this.btnStol18 = new System.Windows.Forms.Button();
-            this.btnStol19 = new System.Windows.Forms.Button();
             this.btnStol15 = new System.Windows.Forms.Button();
             this.btnStol2 = new System.Windows.Forms.Button();
-            this.btnStol1 = new System.Windows.Forms.Button();
-            this.btnStol20 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnStol19 = new System.Windows.Forms.Button();
+            this.btnStol7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Project.Properties.Resources.столики;
+            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(686, 454);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // btnStol3
             // 
@@ -59,6 +69,16 @@
             this.btnStol3.TabIndex = 0;
             this.btnStol3.Text = "3";
             this.btnStol3.UseVisualStyleBackColor = true;
+            // 
+            // btnStol1
+            // 
+            this.btnStol1.Location = new System.Drawing.Point(39, 37);
+            this.btnStol1.Name = "btnStol1";
+            this.btnStol1.Size = new System.Drawing.Size(32, 31);
+            this.btnStol1.TabIndex = 0;
+            this.btnStol1.Text = "1";
+            this.btnStol1.UseVisualStyleBackColor = true;
+            this.btnStol1.Click += new System.EventHandler(this.btnStol1_Click);
             // 
             // btnStol4
             // 
@@ -86,15 +106,6 @@
             this.btnStol11.TabIndex = 0;
             this.btnStol11.Text = "11";
             this.btnStol11.UseVisualStyleBackColor = true;
-            // 
-            // btnStol7
-            // 
-            this.btnStol7.Location = new System.Drawing.Point(615, 25);
-            this.btnStol7.Name = "btnStol7";
-            this.btnStol7.Size = new System.Drawing.Size(32, 31);
-            this.btnStol7.TabIndex = 0;
-            this.btnStol7.Text = "7";
-            this.btnStol7.UseVisualStyleBackColor = true;
             // 
             // btnStol6
             // 
@@ -168,6 +179,15 @@
             this.btnStol21.Text = "21";
             this.btnStol21.UseVisualStyleBackColor = true;
             // 
+            // btnStol20
+            // 
+            this.btnStol20.Location = new System.Drawing.Point(373, 392);
+            this.btnStol20.Name = "btnStol20";
+            this.btnStol20.Size = new System.Drawing.Size(32, 31);
+            this.btnStol20.TabIndex = 0;
+            this.btnStol20.Text = "20";
+            this.btnStol20.UseVisualStyleBackColor = true;
+            // 
             // btnStol16
             // 
             this.btnStol16.Location = new System.Drawing.Point(373, 315);
@@ -195,15 +215,6 @@
             this.btnStol18.Text = "18";
             this.btnStol18.UseVisualStyleBackColor = true;
             // 
-            // btnStol19
-            // 
-            this.btnStol19.Location = new System.Drawing.Point(246, 374);
-            this.btnStol19.Name = "btnStol19";
-            this.btnStol19.Size = new System.Drawing.Size(64, 39);
-            this.btnStol19.TabIndex = 0;
-            this.btnStol19.Text = "19";
-            this.btnStol19.UseVisualStyleBackColor = true;
-            // 
             // btnStol15
             // 
             this.btnStol15.Location = new System.Drawing.Point(580, 212);
@@ -222,34 +233,23 @@
             this.btnStol2.Text = "2";
             this.btnStol2.UseVisualStyleBackColor = true;
             // 
-            // btnStol1
+            // btnStol19
             // 
-            this.btnStol1.Location = new System.Drawing.Point(39, 37);
-            this.btnStol1.Name = "btnStol1";
-            this.btnStol1.Size = new System.Drawing.Size(32, 31);
-            this.btnStol1.TabIndex = 0;
-            this.btnStol1.Text = "1";
-            this.btnStol1.UseVisualStyleBackColor = true;
-            this.btnStol1.Click += new System.EventHandler(this.btnStol1_Click);
+            this.btnStol19.Location = new System.Drawing.Point(246, 374);
+            this.btnStol19.Name = "btnStol19";
+            this.btnStol19.Size = new System.Drawing.Size(64, 39);
+            this.btnStol19.TabIndex = 0;
+            this.btnStol19.Text = "19";
+            this.btnStol19.UseVisualStyleBackColor = true;
             // 
-            // btnStol20
+            // btnStol7
             // 
-            this.btnStol20.Location = new System.Drawing.Point(373, 392);
-            this.btnStol20.Name = "btnStol20";
-            this.btnStol20.Size = new System.Drawing.Size(32, 31);
-            this.btnStol20.TabIndex = 0;
-            this.btnStol20.Text = "20";
-            this.btnStol20.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Project.Properties.Resources.столики;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(686, 454);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.btnStol7.Location = new System.Drawing.Point(615, 25);
+            this.btnStol7.Name = "btnStol7";
+            this.btnStol7.Size = new System.Drawing.Size(32, 31);
+            this.btnStol7.TabIndex = 0;
+            this.btnStol7.Text = "7";
+            this.btnStol7.UseVisualStyleBackColor = true;
             // 
             // BookingStolWind
             // 
@@ -290,11 +290,12 @@
 
         #endregion
 
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnStol3;
+        private System.Windows.Forms.Button btnStol1;
         private System.Windows.Forms.Button btnStol4;
         private System.Windows.Forms.Button btnStol5;
         private System.Windows.Forms.Button btnStol11;
-        private System.Windows.Forms.Button btnStol7;
         private System.Windows.Forms.Button btnStol6;
         private System.Windows.Forms.Button btnStol10;
         private System.Windows.Forms.Button btnStol9;
@@ -303,14 +304,13 @@
         private System.Windows.Forms.Button btnStol14;
         private System.Windows.Forms.Button btnStol12;
         private System.Windows.Forms.Button btnStol21;
+        private System.Windows.Forms.Button btnStol20;
         private System.Windows.Forms.Button btnStol16;
         private System.Windows.Forms.Button btnStol17;
         private System.Windows.Forms.Button btnStol18;
-        private System.Windows.Forms.Button btnStol19;
         private System.Windows.Forms.Button btnStol15;
         private System.Windows.Forms.Button btnStol2;
-        private System.Windows.Forms.Button btnStol1;
-        private System.Windows.Forms.Button btnStol20;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnStol19;
+        private System.Windows.Forms.Button btnStol7;
     }
 }

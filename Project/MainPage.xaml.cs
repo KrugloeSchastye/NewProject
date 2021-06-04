@@ -20,9 +20,11 @@ namespace Project
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        string Login;
+        public MainPage(string Login)
         {
             InitializeComponent();
+            this.Login = Login;
         }
 
         private void btnEmp_Click(object sender, RoutedEventArgs e)
@@ -37,7 +39,7 @@ namespace Project
 
         private void btnZak_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new RegZakPage());
+            Manager.MainFrame.Navigate(new RegZakPage(Login));
         }
 
         private void btnTable_Click(object sender, RoutedEventArgs e)

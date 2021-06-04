@@ -30,7 +30,9 @@ namespace Project
         public int Restoran { get; set; }
         public int Role { get; set; }
         public Nullable<int> NumberOfSales { get; set; }
+        public int idLogin { get; set; }
     
+        public virtual Login Login { get; set; }
         public virtual Restaurants Restaurants { get; set; }
         public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -25,11 +25,33 @@ namespace Project
         int idZak;
         double Summa;
         double SummaS;
-
-        public RegZakWindow(int Stol)
+        int zak;
+        public RegZakWindow(int Stol, int zak)
         {
             InitializeComponent();
             this.Stol = Stol;
+            this.zak = zak;
+            if (zak != 0)
+            {
+                dgZakBludo.ItemsSource = db.ZakazBluda.Where(i => i.Zakazi.idZakaza == zak).ToList();
+                var emp = db.Zakazi.Where(i => i.idZakaza == zak).FirstOrDefault();
+                cbEmployee.Visibility = Visibility.Collapsed;
+                txtbEmp.Visibility = Visibility.Visible;
+                txtbEmp.IsEnabled = false;
+                txtbEmp.Text = emp.Employee1.Surname;
+                txtItog.Text = emp.SummaZakaza.ToString();
+                btnAdd.IsEnabled = true;
+                if (emp.idSCard != null)
+                {
+                    cbSearchSC.IsChecked = true;
+                    txtbSkidCard.Text = emp.idSCard;
+                    txtItogS.Text = emp.SummaZakazaS.ToString();
+                }
+            }
+            else
+            {
+                
+            }
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
@@ -163,6 +185,7 @@ namespace Project
                     if (item2.idZakaza == idZak)
                     {
                         item2.SummaZakazaS = SummaS;
+                        item2.idSCard = txtbSkidCard.Text;
                     }
                 }
                 db.SaveChanges();

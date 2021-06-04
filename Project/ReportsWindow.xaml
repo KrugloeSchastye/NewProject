@@ -10,5 +10,8 @@
     <StackPanel>
         <TextBlock Text="Отчеты" Style="{Binding Source={StaticResource Header}}" Margin="10"/>
         <Button Content="Отчет по сотрудникам" x:Name="btnEmp" Click="btnEmp_Click" Margin="10"/>
+        <Button Content="Отчет по клиентам" x:Name="btnEmp1" Click="btnEmp_Click" Margin="10"/>
+        <Button Content="Отчет по блюдам" x:Name="btnEmp2" Click="btnEmp_Click" Margin="10"/>
+        <Button Content="Отчет по скидочным картам" x:Name="btnEmp3" Click="btnEmp_Click" Margin="10"/>
     </StackPanel>
 </Window>

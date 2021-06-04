@@ -28,7 +28,7 @@ namespace Project
             InitializeComponent();
             this.Login = Login;
             this.Dates = Dates;
-            MainFrame.Navigate(new MainPage());
+            MainFrame.Navigate(new MainPage(Login));
             Manager.MainFrame = MainFrame;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

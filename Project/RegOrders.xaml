@@ -1,40 +1,31 @@
-﻿<Window x:Class="Project.RegZakWindow"
+﻿<Window x:Class="Project.RegOrders"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
-        xmlns:core="clr-namespace:Project.Model"
         mc:Ignorable="d"
-        Title="Регистрация заказа" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="None">
-
-    <Window.Resources>
-        <core:Emp x:Key="emp"/>
-        <core:Stol x:Key="stoli"/>
-        <core:Bluda x:Key="bluda"/>
-    </Window.Resources>
-
+        Title="Регистрация заказа" Height="450" Width="800" MinHeight="450" MinWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0">
             <StackPanel>
-                <TextBlock Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
-                <StackPanel Orientation="Horizontal">
+                <TextBlock Name="txtHeader" Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button Content="Добавить блюдо" Name="btnAdd" Click="btnAdd_Click" IsEnabled="False"></Button>
                     <Button Content="Удалить блюдо" Name="btnDel" Click="btnDel_Click" IsEnabled="False"></Button>
-                    <!--<Button Content="Купить сертификат" Name="btnBuySert" IsEnabled="False"></Button>-->
                     <Button Content="Сохранить" Name="btnSave" Click="btnSave_Click" IsEnabled="False"></Button>
                     <Button Content="Отмена" Name="btnClose" Click="btnClose_Click"></Button>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Margin="5">
                     <TextBlock Text="Сотрудник"/>
-                    <ComboBox Width="100" Name="cbEmployee" ItemsSource="{Binding Source={StaticResource emp}}" DisplayMemberPath="Surname" SelectedValuePath="idEmployee" SelectionChanged="cbEmployee_SelectionChanged"></ComboBox>
-                    <TextBox Width="100" Name="txtbEmp" Visibility="Collapsed"/>
+                    <TextBox Width="100" Name="txtbEmployee" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Margin="5">
                     <TextBlock Text="Стол"/>
@@ -67,12 +58,12 @@
             </StackPanel>
         </StackPanel>
         
-        <DataGrid Grid.Row="1" x:Name="dgZakBludo" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Grid.Row="1" x:Name="dgOrdBludo" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridComboBoxColumn Header="Наименование блюда" ItemsSource="{Binding Source={StaticResource bluda}}" DisplayMemberPath="NameBludo" SelectedValueBinding="{Binding NameBludo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idBluda" />
-                <DataGridTextColumn Header="Количество"  Width="auto" Binding="{Binding Kolvo, UpdateSourceTrigger=PropertyChanged }" />
-                <DataGridTextColumn Header="Цена" Width="467" Binding="{Binding Cena, UpdateSourceTrigger=PropertyChanged}" />
-                <DataGridTextColumn Header="Сумма" Width="467" Binding="{Binding Summa, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Наименование блюда" Width="auto" Binding="{Binding Menu.NameBludo, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Количество"  Width="auto" Binding="{Binding Kolvo, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Цена" Width="auto" Binding="{Binding Cena, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Сумма" Width="auto" Binding="{Binding Summa, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
