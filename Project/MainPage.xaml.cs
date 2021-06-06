@@ -56,5 +56,10 @@ namespace Project
         {
             new ReportsWindow().ShowDialog();
         }
+
+        private void btnBookingStol_Click(object sender, RoutedEventArgs e)
+        {
+            new BookingWind(Login).ShowDialog();
+        }
     }
 }

@@ -29,10 +29,12 @@ namespace Project
         public int Employee { get; set; }
         public bool Closed { get; set; }
         public string idSCard { get; set; }
+        public Nullable<int> TypeZakaz { get; set; }
     
         public virtual Employee Employee1 { get; set; }
         public virtual Stoli Stoli { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZakazBluda> ZakazBluda { get; set; }
+        public virtual Type Type { get; set; }
     }
 }

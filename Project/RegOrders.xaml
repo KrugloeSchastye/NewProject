@@ -10,8 +10,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel Grid.Row="0">
             <StackPanel>
                 <TextBlock Name="txtHeader" Text="Регистрация заказа" Style="{StaticResource Header}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
@@ -57,7 +58,7 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        
+
         <DataGrid Grid.Row="1" x:Name="dgOrdBludo" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование блюда" Width="auto" Binding="{Binding Menu.NameBludo, UpdateSourceTrigger=PropertyChanged}"/>
@@ -66,5 +67,11 @@
                 <DataGridTextColumn Header="Сумма" Width="auto" Binding="{Binding Summa, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
+            <Label Content="" Name="lblStasus"/>
+            <Label Content="Дата:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label Name="lblDate" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </StackPanel>
     </Grid>
 </Window>

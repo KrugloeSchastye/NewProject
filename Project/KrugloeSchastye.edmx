@@ -11,9 +11,10 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStol" Type="int" Nullable="false" />
-          <Property Name="DateBooking" Type="datetime" Nullable="false" />
+          <Property Name="DateBooking" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ClientFIO" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TimeBooking" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -104,6 +105,13 @@
           <Property Name="NameStola" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsBusy" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="ZakazBluda">
           <Key>
             <PropertyRef Name="idZakazBludo" />
@@ -128,6 +136,7 @@
           <Property Name="Employee" Type="int" Nullable="false" />
           <Property Name="Closed" Type="bit" Nullable="false" />
           <Property Name="idSCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeZakaz" Type="int" />
         </EntityType>
         <Association Name="FK_BookingStol_Stoli">
           <End Role="Stoli" Type="Self.Stoli" Multiplicity="1" />
@@ -273,6 +282,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zakazi_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Zakazi" Type="Self.Zakazi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zakazi">
+              <PropertyRef Name="TypeZakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище user3ModelContainer">
           <EntitySet Name="BookingStol" EntityType="Self.BookingStol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
@@ -284,6 +305,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkidCards" EntityType="Self.SkidCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stoli" EntityType="Self.Stoli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZakazBluda" EntityType="Self.ZakazBluda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakazi" EntityType="Self.Zakazi" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookingStol_Stoli" Association="Self.FK_BookingStol_Stoli">
@@ -332,6 +354,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Zakazi_Stoli" Association="Self.FK_Zakazi_Stoli">
             <End Role="Stoli" EntitySet="Stoli" />
+            <End Role="Zakazi" EntitySet="Zakazi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakazi_Type" Association="Self.FK_Zakazi_Type">
+            <End Role="Type" EntitySet="Type" />
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
         </EntityContainer>
@@ -400,6 +426,11 @@
             <End Role="Zakazi" EntitySet="Zakazi" />
             <End Role="ZakazBluda" EntitySet="ZakazBluda" />
           </AssociationSet>
+          <EntitySet Name="Type" EntityType="user3Model.Type" />
+          <AssociationSet Name="FK_Zakazi_Type" Association="user3Model.FK_Zakazi_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Zakazi" EntitySet="Zakazi" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BookingStol">
           <Key>
@@ -407,10 +438,11 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idStol" Type="Int32" Nullable="false" />
-          <Property Name="DateBooking" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateBooking" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ClientFIO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TimeBooking" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Stoli" Relationship="user3Model.FK_BookingStol_Stoli" FromRole="BookingStol" ToRole="Stoli" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -548,6 +580,8 @@
           <NavigationProperty Name="Employee1" Relationship="user3Model.FK_Zakazi_Employee" FromRole="Zakazi" ToRole="Employee" />
           <NavigationProperty Name="Stoli" Relationship="user3Model.FK_Zakazi_Stoli" FromRole="Zakazi" ToRole="Stoli" />
           <NavigationProperty Name="ZakazBluda" Relationship="user3Model.FK_ZakazBluda_Zakazi" FromRole="Zakazi" ToRole="ZakazBluda" />
+          <Property Name="TypeZakaz" Type="Int32" />
+          <NavigationProperty Name="Type" Relationship="user3Model.FK_Zakazi_Type" FromRole="Zakazi" ToRole="Type" />
         </EntityType>
         <Association Name="FK_BookingStol_Stoli">
           <End Type="user3Model.Stoli" Role="Stoli" Multiplicity="1" />
@@ -693,6 +727,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zakazi" Relationship="user3Model.FK_Zakazi_Type" FromRole="Type" ToRole="Zakazi" />
+        </EntityType>
+        <Association Name="FK_Zakazi_Type">
+          <End Type="user3Model.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="user3Model.Zakazi" Role="Zakazi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zakazi">
+              <PropertyRef Name="TypeZakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -702,6 +756,7 @@
           <EntitySetMapping Name="BookingStol">
             <EntityTypeMapping TypeName="user3Model.BookingStol">
               <MappingFragment StoreEntitySet="BookingStol">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="TimeBooking" ColumnName="TimeBooking" />
                 <ScalarProperty Name="ClientFIO" ColumnName="ClientFIO" />
                 <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
@@ -823,6 +878,7 @@
           <EntitySetMapping Name="Zakazi">
             <EntityTypeMapping TypeName="user3Model.Zakazi">
               <MappingFragment StoreEntitySet="Zakazi">
+                <ScalarProperty Name="TypeZakaz" ColumnName="TypeZakaz" />
                 <ScalarProperty Name="idSCard" ColumnName="idSCard" />
                 <ScalarProperty Name="Closed" ColumnName="Closed" />
                 <ScalarProperty Name="Employee" ColumnName="Employee" />
@@ -832,6 +888,14 @@
                 <ScalarProperty Name="SummaZakaza" ColumnName="SummaZakaza" />
                 <ScalarProperty Name="Stol" ColumnName="Stol" />
                 <ScalarProperty Name="idZakaza" ColumnName="idZakaza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="user3Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

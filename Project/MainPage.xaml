@@ -23,6 +23,7 @@
             <Button Content="Столы" Name="btnTable" Click="btnTable_Click"></Button>
             <Button Content="Скидочные карты" Name="btnCard" Click="btnCard_Click"></Button>
             <Button Content="Отчеты" x:Name="btnReps" Click="btnReps_Click"/>
+            <Button Content="Бронирование столов" x:Name="btnBookingStol" Click="btnBookingStol_Click" />
         </StackPanel>
     </Grid>
 </Page>

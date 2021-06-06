@@ -33,6 +33,7 @@ namespace Project
                     else
                     {
                         btnStol1.BackColor = Color.Red;
+                        btnStol1.Enabled = false;
                     }
                 }
                 if (item.idStola == 2)
@@ -44,6 +45,7 @@ namespace Project
                     else
                     {
                         btnStol2.BackColor = Color.Red;
+                        btnStol2.Enabled = false;
                     }
                 }
                 if (item.idStola == 3)
@@ -55,6 +57,7 @@ namespace Project
                     else
                     {
                         btnStol3.BackColor = Color.Red;
+                        btnStol3.Enabled = false;
                     }
                 }
                 if (item.idStola == 4)
@@ -66,6 +69,7 @@ namespace Project
                     else
                     {
                         btnStol4.BackColor = Color.Red;
+                        btnStol4.Enabled = false;
                     }
                 }
                 if (item.idStola == 5)
@@ -77,6 +81,7 @@ namespace Project
                     else
                     {
                         btnStol5.BackColor = Color.Red;
+                        btnStol5.Enabled = false;
                     }
                 }
                 if (item.idStola == 6)
@@ -88,6 +93,7 @@ namespace Project
                     else
                     {
                         btnStol6.BackColor = Color.Red;
+                        btnStol6.Enabled = false;
                     }
                 }
                 if (item.idStola == 7)
@@ -99,6 +105,7 @@ namespace Project
                     else
                     {
                         btnStol7.BackColor = Color.Red;
+                        btnStol7.Enabled = false;
                     }
                 }
                 if (item.idStola == 8)
@@ -110,6 +117,7 @@ namespace Project
                     else
                     {
                         btnStol8.BackColor = Color.Red;
+                        btnStol8.Enabled = false;
                     }
                 }
                 if (item.idStola == 9)
@@ -121,6 +129,7 @@ namespace Project
                     else
                     {
                         btnStol9.BackColor = Color.Red;
+                        btnStol9.Enabled = false;
                     }
                 }
                 if (item.idStola == 10)
@@ -132,6 +141,7 @@ namespace Project
                     else
                     {
                         btnStol10.BackColor = Color.Red;
+                        btnStol10.Enabled = false;
                     }
                 }
                 if (item.idStola == 11)
@@ -143,6 +153,7 @@ namespace Project
                     else
                     {
                         btnStol11.BackColor = Color.Red;
+                        btnStol11.Enabled = false;
                     }
                 }
                 if (item.idStola == 12)
@@ -154,6 +165,7 @@ namespace Project
                     else
                     {
                         btnStol12.BackColor = Color.Red;
+                        btnStol12.Enabled = false;
                     }
                 }
                 if (item.idStola == 13)
@@ -165,6 +177,7 @@ namespace Project
                     else
                     {
                         btnStol13.BackColor = Color.Red;
+                        btnStol13.Enabled = false;
                     }
                 }
                 if (item.idStola == 14)
@@ -176,6 +189,7 @@ namespace Project
                     else
                     {
                         btnStol14.BackColor = Color.Red;
+                        btnStol14.Enabled = false;
                     }
                 }
                 if (item.idStola == 15)
@@ -187,6 +201,7 @@ namespace Project
                     else
                     {
                         btnStol15.BackColor = Color.Red;
+                        btnStol15.Enabled = false;
                     }
                 }
                 if (item.idStola == 16)
@@ -198,6 +213,7 @@ namespace Project
                     else
                     {
                         btnStol16.BackColor = Color.Red;
+                        btnStol16.Enabled = false;
                     }
                 }
                 if (item.idStola == 17)
@@ -209,6 +225,7 @@ namespace Project
                     else
                     {
                         btnStol17.BackColor = Color.Red;
+                        btnStol17.Enabled = false;
                     }
                 }
                 if (item.idStola == 18)
@@ -220,6 +237,7 @@ namespace Project
                     else
                     {
                         btnStol18.BackColor = Color.Red;
+                        btnStol18.Enabled = false;
                     }
                 }
                 if (item.idStola == 19)
@@ -231,6 +249,7 @@ namespace Project
                     else
                     {
                         btnStol19.BackColor = Color.Red;
+                        btnStol19.Enabled = false;
                     }
                 }
                 if (item.idStola == 20)
@@ -242,6 +261,7 @@ namespace Project
                     else
                     {
                         btnStol20.BackColor = Color.Red;
+                        btnStol20.Enabled = false;
                     }
                 }
                 if (item.idStola == 21)
@@ -253,9 +273,159 @@ namespace Project
                     else
                     {
                         btnStol21.BackColor = Color.Red;
+                        btnStol21.Enabled = false;
                     }
                 }
+
             }
+            string currDate = DateTime.Now.ToString("d");
+            List<BookingStol> list = db.BookingStol.Where(i => i.DateBooking == currDate && i.Status == false).ToList();
+            foreach (var item in list)
+                if (item.TimeBooking != null)
+                {
+
+                    if (item.idStol == 1)
+                    {
+                        btnStol1.BackColor = Color.Red;
+                        btnStol1.Enabled = false;
+                    }
+
+                    if (item.idStol == 2)
+                    {
+                        btnStol2.BackColor = Color.Red;
+                        btnStol2.Enabled = false;
+                    }
+
+                    if (item.idStol == 3)
+                    {
+                        btnStol3.BackColor = Color.Red;
+                        btnStol3.Enabled = false;
+                    }
+
+                    if (item.idStol == 4)
+                    {
+                        btnStol4.BackColor = Color.Red;
+                        btnStol4.Enabled = false;
+                    }
+
+                    if (item.idStol == 5)
+                    {
+                        btnStol5.BackColor = Color.Red;
+                        btnStol5.Enabled = false;
+                    }
+
+
+                    if (item.idStol == 6)
+                    {
+                        btnStol6.BackColor = Color.Red;
+                        btnStol6.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 7)
+                    {
+                        btnStol7.BackColor = Color.Red;
+                        btnStol7.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 8)
+                    {
+                        btnStol8.BackColor = Color.Red;
+                        btnStol8.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 9)
+                    {
+                        btnStol9.BackColor = Color.Red;
+                        btnStol9.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 10)
+                    {
+                        btnStol10.BackColor = Color.Red;
+                        btnStol10.Enabled = false;
+
+                    }
+                    if (item.idStol == 11)
+                    {
+                        btnStol11.BackColor = Color.Red;
+                        btnStol11.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 12)
+                    {
+                        btnStol12.BackColor = Color.Red;
+                        btnStol12.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 13)
+                    {
+                        btnStol13.BackColor = Color.Red;
+                        btnStol13.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 14)
+                    {
+                        btnStol14.BackColor = Color.Red;
+                        btnStol14.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 15)
+                    {
+                        btnStol15.BackColor = Color.Red;
+                        btnStol15.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 16)
+                    {
+                        btnStol16.BackColor = Color.Red;
+                        btnStol16.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 17)
+                    {
+                        btnStol17.BackColor = Color.Red;
+                        btnStol17.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 18)
+                    {
+                        btnStol18.BackColor = Color.Red;
+                        btnStol18.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 19)
+                    {
+                        btnStol19.BackColor = Color.Red;
+                        btnStol19.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 20)
+                    {
+                        btnStol20.BackColor = Color.Red;
+                        btnStol20.Enabled = false;
+
+                    }
+
+                    if (item.idStol == 21)
+                    {
+                        btnStol21.BackColor = Color.Red;
+                        btnStol21.Enabled = false;
+                    }
+                }
+
         }
         user3Entities db = new user3Entities();
 
@@ -271,6 +441,7 @@ namespace Project
                         i.IsBusy = false;
                     }
                 }
+                db.SaveChanges();
                 new RegOrders(tab.idStola, 0, Login).ShowDialog();
                 this.Close();
             }

@@ -29,6 +29,8 @@
         <AssociationConnector Association="user3Model.FK_ZakazBluda_Menu" />
         <AssociationConnector Association="user3Model.FK_Zakazi_Stoli" />
         <AssociationConnector Association="user3Model.FK_ZakazBluda_Zakazi" />
+        <EntityTypeShape EntityType="user3Model.Type" Width="1.5" PointX="10.375" PointY="0.875" />
+        <AssociationConnector Association="user3Model.FK_Zakazi_Type" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

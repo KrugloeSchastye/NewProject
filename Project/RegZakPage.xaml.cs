@@ -80,6 +80,11 @@ namespace Project
                             {
                                 item.DateCloseZakaz = DateTime.Now;
                                 item.Closed = true;
+                                if (item.TypeZakaz == 2)
+                                {
+                                    BookingStol t =(BookingStol)db.BookingStol.Where(tt => tt.idStol == item.Stoli.idStola && tt.Status==false).FirstOrDefault();
+                                    t.Status = true;
+                                }
                             }
                         }
                     }

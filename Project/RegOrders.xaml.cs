@@ -25,6 +25,7 @@ namespace Project
         int idZak;
         double Summa;
         double SummaS;
+        string status = "Обычный";
         public RegOrders(int idTable, int stat, string Login)
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Project
             this.idTable = idTable;
             this.stat = stat;
             this.Login = Login;
+            lblStasus.Content = status;
         }
         user3Entities db = new user3Entities();
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,11 +41,26 @@ namespace Project
             if (stat == 0)
             {
                 Zakazi zak = new Zakazi();
+
+                if (lblDate.Content != "")
+                {
+                    zak.DateOpenZakaz = DateTime.Parse(lblDate.Content.ToString());
+                    zak.TypeZakaz = 2;
+
+                }
+                else
+                {
+                    zak.DateOpenZakaz = DateTime.Now;
+                    lblDate.Content = DateTime.Now;
+                    zak.TypeZakaz = 1;
+                }
+                
                 zak.Stol = idTable;
-                zak.DateOpenZakaz = DateTime.Now;
+                
                 zak.SummaZakaza = 0;
                 var emp = db.Employee.Where(i => i.Login.UserName == Login).FirstOrDefault();
                 zak.Employee = emp.idEmployee;
+                
                 
                 zak.Closed = false;
                 db.Zakazi.Add(zak);
@@ -66,6 +83,11 @@ namespace Project
                     cbSearchSC.IsChecked = true;
                     txtItogS.Text = zakaz.SummaZakazaS.ToString();
                 }
+                if (zakaz.TypeZakaz == 1)
+                    lblStasus.Content = "Обычный";
+                else
+                    lblStasus.Content = "Предзаказ";
+                lblDate.Content = zakaz.DateOpenZakaz.ToString();
                 txtItog.Text = zakaz.SummaZakaza.ToString();
                 txtbStol.Text = zakaz.Stol.ToString();
                 dgOrdBludo.ItemsSource = db.ZakazBluda.Where(i => i.idZakaza == idZak).ToList();

@@ -12,15 +12,18 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class BookingStol
+    public partial class Type
     {
-        public int id { get; set; }
-        public int idStol { get; set; }
-        public string DateBooking { get; set; }
-        public string ClientFIO { get; set; }
-        public string TimeBooking { get; set; }
-        public bool Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Type()
+        {
+            this.Zakazi = new HashSet<Zakazi>();
+        }
     
-        public virtual Stoli Stoli { get; set; }
+        public int id { get; set; }
+        public string typeName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zakazi> Zakazi { get; set; }
     }
 }
