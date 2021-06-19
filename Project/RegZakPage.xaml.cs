@@ -97,7 +97,9 @@ namespace Project
                         }
                     }
                     db.SaveChanges();
-                    dgZak.ItemsSource = db.Zakazi.ToArray().ToList();
+
+                    dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
+                    dgZakC.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() != "").ToList();
 
                     foreach (var item in db.Employee)
                     {
@@ -142,7 +144,7 @@ namespace Project
                     foreach (var item in db.Stoli)
                     {
                         if (Stol == item.idStola)
-                        {
+                        {   
                             item.IsBusy = true;
                         }
                     }

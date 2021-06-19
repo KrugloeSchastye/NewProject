@@ -29,6 +29,7 @@ namespace Project
 
         private void btnEmp_Click(object sender, RoutedEventArgs e)
         {
+
             //var all = db.Employee.ToList().OrderBy(p => p.idEmployee).ToList();
             //var application = new Excel.Application();
             //application.SheetsInNewWorkbook = 2;

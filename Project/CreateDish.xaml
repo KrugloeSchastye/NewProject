@@ -25,9 +25,10 @@
             </StackPanel>
             <StackPanel Margin="10" Width="110">
                 <TextBlock Text="Раздел меню"/>
-                <ComboBox x:Name="cbRazdel" ItemsSource="{Binding Source={StaticResource razdel}}" DisplayMemberPath="NameRazdela" SelectedValuePath="idRazdel"/>
+                <ComboBox Height="26" x:Name="cbRazdel" ItemsSource="{Binding Source={StaticResource razdel}}" DisplayMemberPath="NameRazdela" SelectedValuePath="idRazdel"/>
                 <TextBlock Text="Цена"/>
                 <TextBox x:Name="txtbPrice" Height="25"/>
+                <Button Content="Картинка" Width="80" Margin="10" Name="btnImage" Click="btnImage_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

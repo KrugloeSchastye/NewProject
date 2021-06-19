@@ -33,7 +33,11 @@
             </StackPanel>
             <StackPanel Margin="10" Width="110">
                 <TextBlock Text="Роль"/>
-                <ComboBox x:Name="cbRole" ItemsSource="{Binding Source={StaticResource ResourceKey=role}}" DisplayMemberPath="Name" SelectedValuePath="idRole"/>
+                <ComboBox Height="26" x:Name="cbRole" ItemsSource="{Binding Source={StaticResource ResourceKey=role}}" DisplayMemberPath="Name" SelectedValuePath="idRole"/>
+                <TextBlock Text="Логин"/>
+                <TextBox Height="23" TextWrapping="Wrap" Name="txtLogin" Text=""/>
+                <TextBlock Text="Пароль"/>
+                <TextBox Height="23" TextWrapping="Wrap" Name="txtPassword" Text=""/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

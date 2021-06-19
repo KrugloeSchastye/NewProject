@@ -38,7 +38,7 @@
         
         <DataGrid Grid.Row="1" Name="dgDish" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="210">
+                <DataGridTemplateColumn Width="180">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Path=Image}"/>

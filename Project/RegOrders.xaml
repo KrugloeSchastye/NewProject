@@ -32,14 +32,7 @@
                     <TextBlock Text="Стол"/>
                     <TextBox Width="80" Name="txtbStol" IsEnabled="False"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" IsEnabled="False">
-                    <CheckBox VerticalAlignment="Center"></CheckBox>
-                    <StackPanel Margin="5">
-                        <TextBlock Text="Подарочный сертификат"/>
-                        <ComboBox Width="100" Name="cbSert"></ComboBox>
-                    </StackPanel>
-                    <TextBlock Margin="5" Name="txtSertCheck" VerticalAlignment="Center"></TextBlock>
-                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal" IsEnabled="True">
                     <CheckBox VerticalAlignment="Center" x:Name="cbSearchSC" Checked="cbSearchSC_Checked" Unchecked="cbSearchSC_Unchecked"></CheckBox>
                     <StackPanel Margin="5">

@@ -42,11 +42,6 @@ namespace Project
             Manager.MainFrame.Navigate(new RegZakPage(Login));
         }
 
-        private void btnTable_Click(object sender, RoutedEventArgs e)
-        {
-            new TableWindow().ShowDialog();
-        }
-
         private void btnCard_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new SkidCardPage());

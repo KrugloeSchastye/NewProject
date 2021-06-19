@@ -20,7 +20,6 @@
             <Button Content="Сотрудники" Name="btnEmp" Click="btnEmp_Click"></Button>
             <Button Content="Блюда" Name="btnBludo" Click="btnBludo_Click"></Button>
             <Button Content="Заказы" Name="btnZak" Click="btnZak_Click"></Button>
-            <Button Content="Столы" Name="btnTable" Click="btnTable_Click"></Button>
             <Button Content="Скидочные карты" Name="btnCard" Click="btnCard_Click"></Button>
             <Button Content="Отчеты" x:Name="btnReps" Click="btnReps_Click"/>
             <Button Content="Бронирование столов" x:Name="btnBookingStol" Click="btnBookingStol_Click" />

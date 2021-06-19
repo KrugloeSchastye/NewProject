@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -40,12 +42,28 @@ namespace Project
                 menu.Struct = txtbCompos.Text;
                 menu.RazdelMenu = cbRazdel.SelectedIndex;
                 menu.Price = Convert.ToInt32(txtbPrice.Text);
+                if (img != null)
+                {
+                    menu.Image = img;
+                }
+                else
+                { 
+                
+                }
                 db.Menu.Add(menu);
                 db.SaveChanges();
                 Close();
             }
             catch
             { }
+        }
+        byte[] img;
+        private void btnImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+
+            img = File.ReadAllBytes(ofd.FileName);
         }
     }
 }

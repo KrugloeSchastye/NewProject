@@ -24,6 +24,29 @@ namespace Project
         {
             InitializeComponent();
         }
+        private void txtbSurname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtLogin.Text = "";
+            txtLogin.Text = Translit(txtbSurname.Text.ToLower()) + "_" + Translit(txtbName.Text.ToLower());
+        }
+
+        private static string Translit(string s)
+        {
+            StringBuilder ret = new StringBuilder();
+            string[] rus = { "а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я" };
+            string[] eng = { "a", "b", "v", "g", "d", "e", "e", "zh", "z", "i", "y", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "kh", "ts","ch", "sh", "shch", null, "y", null, "e", "yu", "ya" };
+
+            for (int j = 0; j < s.Length; j++)
+                for (int i = 0; i < rus.Length; i++)
+                    if (s.Substring(j, 1) == rus[i]) ret.Append(eng[i]);
+            return ret.ToString();
+        }
+
+        private void txtbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtLogin.Text = "";
+            txtLogin.Text = Translit(txtbSurname.Text.ToLower()) + "_" + Translit(txtbName.Text.ToLower());
+        }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -40,6 +63,13 @@ namespace Project
                 Roles rol = cbRole.SelectedItem as Roles;
                 emp.Role = rol.idRole;
                 db.Employee.Add(emp);
+                db.SaveChanges();
+                Login log = new Login();
+                log.UserName = txtLogin.Text;
+                log.Password = txtPassword.Text;
+                log.Role = rol.idRole;
+                log.CountWrong = 0;
+                db.Login.Add(log);
                 db.SaveChanges();
                 Close();
             }
