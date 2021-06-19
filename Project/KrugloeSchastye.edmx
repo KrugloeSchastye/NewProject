@@ -105,7 +105,7 @@
           <Property Name="NameStola" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsBusy" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Type">
+        <EntityType Name="Types">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -283,10 +283,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zakazi_Type">
-          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Types" Type="Self.Types" Multiplicity="0..1" />
           <End Role="Zakazi" Type="Self.Zakazi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Type">
+            <Principal Role="Types">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Zakazi">
@@ -305,7 +305,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkidCards" EntityType="Self.SkidCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stoli" EntityType="Self.Stoli" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZakazBluda" EntityType="Self.ZakazBluda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakazi" EntityType="Self.Zakazi" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookingStol_Stoli" Association="Self.FK_BookingStol_Stoli">
@@ -357,7 +357,7 @@
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
           <AssociationSet Name="FK_Zakazi_Type" Association="Self.FK_Zakazi_Type">
-            <End Role="Type" EntitySet="Type" />
+            <End Role="Types" EntitySet="Types" />
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
         </EntityContainer>
@@ -426,9 +426,9 @@
             <End Role="Zakazi" EntitySet="Zakazi" />
             <End Role="ZakazBluda" EntitySet="ZakazBluda" />
           </AssociationSet>
-          <EntitySet Name="Type" EntityType="user3Model.Type" />
+          <EntitySet Name="Types" EntityType="user3Model.Types" />
           <AssociationSet Name="FK_Zakazi_Type" Association="user3Model.FK_Zakazi_Type">
-            <End Role="Type" EntitySet="Type" />
+            <End Role="Types" EntitySet="Types" />
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
         </EntityContainer>
@@ -581,7 +581,7 @@
           <NavigationProperty Name="Stoli" Relationship="user3Model.FK_Zakazi_Stoli" FromRole="Zakazi" ToRole="Stoli" />
           <NavigationProperty Name="ZakazBluda" Relationship="user3Model.FK_ZakazBluda_Zakazi" FromRole="Zakazi" ToRole="ZakazBluda" />
           <Property Name="TypeZakaz" Type="Int32" />
-          <NavigationProperty Name="Type" Relationship="user3Model.FK_Zakazi_Type" FromRole="Zakazi" ToRole="Type" />
+          <NavigationProperty Name="Types" Relationship="user3Model.FK_Zakazi_Type" FromRole="Zakazi" ToRole="Types" />
         </EntityType>
         <Association Name="FK_BookingStol_Stoli">
           <End Type="user3Model.Stoli" Role="Stoli" Multiplicity="1" />
@@ -727,19 +727,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Type">
+        <EntityType Name="Types">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="typeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Zakazi" Relationship="user3Model.FK_Zakazi_Type" FromRole="Type" ToRole="Zakazi" />
+          <NavigationProperty Name="Zakazi" Relationship="user3Model.FK_Zakazi_Type" FromRole="Types" ToRole="Zakazi" />
         </EntityType>
         <Association Name="FK_Zakazi_Type">
-          <End Type="user3Model.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="user3Model.Types" Role="Types" Multiplicity="0..1" />
           <End Type="user3Model.Zakazi" Role="Zakazi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Type">
+            <Principal Role="Types">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Zakazi">
@@ -891,9 +891,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Type">
-            <EntityTypeMapping TypeName="user3Model.Type">
-              <MappingFragment StoreEntitySet="Type">
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="user3Model.Types">
+              <MappingFragment StoreEntitySet="Types">
                 <ScalarProperty Name="typeName" ColumnName="typeName" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

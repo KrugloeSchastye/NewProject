@@ -12,10 +12,10 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Type
+    public partial class Types
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Type()
+        public Types()
         {
             this.Zakazi = new HashSet<Zakazi>();
         }

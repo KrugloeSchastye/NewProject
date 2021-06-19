@@ -35,6 +35,6 @@ namespace Project
         public virtual Stoli Stoli { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZakazBluda> ZakazBluda { get; set; }
-        public virtual Type Type { get; set; }
+        public virtual Types Types { get; set; }
     }
 }
