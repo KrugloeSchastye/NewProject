@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,6 @@ namespace Project
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //new StoliWindow().ShowDialog();
             string titl = "Выбор стола";
             new TablesWindow(titl,Login).ShowDialog();
             dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
@@ -46,14 +46,6 @@ namespace Project
         private void dgZak_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Zakazi zakazi = dgZak.SelectedItem as Zakazi;
-            //int idZak = Convert.ToInt32(zakazi.idZakaza);
-
-            ////dgZakBludo.ItemsSource = db.ZakazBluda.Where(t => t.idZakaza == idZak).ToArray().ToList();
-            //int stol = Convert.ToInt32(zakazi.Stol);
-            //double summ = Convert.ToInt32(zakazi.SummaZakaza);
-            //double summS = Convert.ToDouble(zakazi.SummaZakazaS);
-            //string open = Convert.ToString(zakazi.DateOpenZakaz);
-            //string close = Convert.ToString(zakazi.DateCloseZakaz);
             new RegOrders(zakazi.Stol, zakazi.idZakaza, Login).ShowDialog();
         }
 
@@ -165,6 +157,24 @@ namespace Project
             string open = Convert.ToString(zakazi.DateOpenZakaz);
             string close = Convert.ToString(zakazi.DateCloseZakaz);
             new ZakazInfoWindow(idZak, stol, summ, summS, open, close).ShowDialog();
+        }
+         
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            Zakazi zak111 = dgZak.SelectedItem as Zakazi;
+            
+            
+
+        }
+
+        private void dgZak_Selected(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void dgZakC_Selected(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

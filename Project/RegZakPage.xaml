@@ -29,7 +29,7 @@
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="Открытые заказы">
-                <DataGrid Grid.Row="1" Name="dgZak" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dgZak_MouseDoubleClick">
+                <DataGrid Grid.Row="1" Name="dgZak" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="dgZak_Selected" MouseDoubleClick="dgZak_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn Header="Стол" Width="100" ItemsSource="{Binding Source={StaticResource listStoli}}" DisplayMemberPath="NameStola" SelectedValueBinding="{Binding Stol, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idStola"/>
                         <DataGridTextColumn Header="Итог" Width="100" Binding="{Binding SummaZakaza, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -41,7 +41,7 @@
                 </DataGrid>
             </TabItem>
             <TabItem Header="Закрытые заказы">
-                <DataGrid Grid.Row="1" Name="dgZakC" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dgZakC_MouseDoubleClick">
+                <DataGrid Grid.Row="1" Name="dgZakC" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="dgZakC_Selected" MouseDoubleClick="dgZakC_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn Header="Стол" Width="100" ItemsSource="{Binding Source={StaticResource listStoli}}" DisplayMemberPath="NameStola" SelectedValueBinding="{Binding Stol, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="idStola"/>
                         <DataGridTextColumn Header="Итог" Width="100" Binding="{Binding SummaZakaza, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

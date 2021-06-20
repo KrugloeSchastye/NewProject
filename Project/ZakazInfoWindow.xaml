@@ -35,6 +35,7 @@
                         <TextBlock Text="Время закрытия заказа"></TextBlock>
                         <TextBlock x:Name="txtDateClose" Text=""></TextBlock>
                     </StackPanel>
+                    <Button Content="Чек" Name="btnReports" Width="100" Click="btnReports_Click"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Блюда заказа">
