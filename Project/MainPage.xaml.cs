@@ -21,10 +21,43 @@ namespace Project
     public partial class MainPage : Page
     {
         string Login;
+        user3Entities db = new user3Entities();
         public MainPage(string Login)
         {
             InitializeComponent();
             this.Login = Login;
+            Login currLogin = (Login)db.Login.Where(i => i.UserName == Login).FirstOrDefault();
+            if (currLogin.Role == 1)
+            { }
+            if (currLogin.Role == 2)
+            {
+                btnBludo.Visibility = Visibility.Collapsed;
+                btnBookingStol.Visibility = Visibility.Collapsed;
+            }
+            if (currLogin.Role == 3)
+            {
+                btnEmp.Visibility = Visibility.Collapsed;
+                btnBludo.Visibility = Visibility.Collapsed;
+                btnZak.Visibility = Visibility.Collapsed;
+                btnCard.Visibility = Visibility.Collapsed;
+            }
+            if (currLogin.Role == 4)
+            {
+                btnEmp.Visibility = Visibility.Collapsed;
+            }
+            if(currLogin.Role == 5)
+            {
+                btnBludo.Visibility = Visibility.Collapsed;
+                btnBookingStol.Visibility = Visibility.Collapsed;
+                btnCard.Visibility = Visibility.Collapsed;
+                btnEmp.Visibility = Visibility.Collapsed;
+                btnReps.Visibility = Visibility.Collapsed;
+                btnZak.Visibility = Visibility.Collapsed;
+                tbHeader.Visibility = Visibility.Collapsed;
+
+                tbAccess.Text = "Информационная система для клиентов не доступна!";
+                tbAccess.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnEmp_Click(object sender, RoutedEventArgs e)

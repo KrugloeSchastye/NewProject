@@ -14,15 +14,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock Text="Главное меню" Style="{StaticResource Header}" Margin="5"/>
+            <TextBlock x:Name="tbHeader" Text="Главное меню" Style="{StaticResource Header}" Margin="5"/>
         </StackPanel>
-        <StackPanel Margin="10" Grid.Row="1">
+        <StackPanel Margin="10" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Сотрудники" Name="btnEmp" Click="btnEmp_Click"></Button>
             <Button Content="Блюда" Name="btnBludo" Click="btnBludo_Click"></Button>
             <Button Content="Заказы" Name="btnZak" Click="btnZak_Click"></Button>
             <Button Content="Скидочные карты" Name="btnCard" Click="btnCard_Click"></Button>
             <Button Content="Отчеты" x:Name="btnReps" Click="btnReps_Click"/>
             <Button Content="Бронирование столов" x:Name="btnBookingStol" Click="btnBookingStol_Click" />
+            <TextBlock x:Name="tbAccess" Visibility="Collapsed" Style="{StaticResource Header}"/>
         </StackPanel>
     </Grid>
 </Page>

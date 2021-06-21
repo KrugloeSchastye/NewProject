@@ -26,6 +26,9 @@
                 <Button Content="Удалить" Name="btnDel" Width="100" Click="btnDel_Click"/>
                 <Button Content="Закрыть заказ" Name="btnCloseZak" Width="100" Click="btnCloseZak_Click"/>
             </StackPanel>
+            <StackPanel Margin="5">
+                <CheckBox x:Name="chbPredOrd" Content="Предзаказ" Checked="chbPredOrd_Checked" Unchecked="chbPredOrd_Unchecked"/>
+            </StackPanel>
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="Открытые заказы">

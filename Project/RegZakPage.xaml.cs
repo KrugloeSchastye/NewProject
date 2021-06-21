@@ -176,5 +176,15 @@ namespace Project
         {
             
         }
+
+        private void chbPredOrd_Checked(object sender, RoutedEventArgs e)
+        {
+            dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "" && t.Types.id == 2).ToList();
+        }
+
+        private void chbPredOrd_Unchecked(object sender, RoutedEventArgs e)
+        {
+            dgZak.ItemsSource = db.Zakazi.Where(t => t.DateCloseZakaz.ToString() == "").ToList();
+        }
     }
 }
